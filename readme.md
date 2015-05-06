@@ -11,9 +11,9 @@
   a. Scrape web pages and pdfs  
   b. [Image to Text Script](https://github.com/soodoku/image-to-text)  
   c. Applications of Web Scraping. Scripts:    
-    i.   [Get Journalist Data](https://github.com/soodoku/get-journalist-data)      
-    ii.  [Get Weather Data](https://github.com/soodoku/get-weather-data)    
-    iii. [Get Cricket Data](https://github.com/soodoku/get-cricket-data)   
+      i.   [Get Journalist Data](https://github.com/soodoku/get-journalist-data)      
+      ii.  [Get Weather Data](https://github.com/soodoku/get-weather-data)    
+      iii. [Get Cricket Data](https://github.com/soodoku/get-cricket-data)   
   d. Regular Expressions  
 
 3. Databases and SQL

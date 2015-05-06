@@ -7,7 +7,7 @@
   d. What is Data Science?  
   e. Prerequisites 
 
-2. [Get your own Data](https://github.com/soodoku/data-science/blob/master/ds2_web.pdf)
+2. [Get your own Data](https://github.com/soodoku/data-science/blob/master/ds2_web.pdf)  
   a. Scrape web pages and pdfs  
   b. [Image to Text Script](https://github.com/soodoku/image-to-text)  
   c. Applications of Web Scraping. Scripts:    

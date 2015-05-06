@@ -1,6 +1,6 @@
 ## Data Science
 
-1. [Introduction to Data Science](https://github.com/soodoku/data-science\ds1_web.pdf)    
+1. [Introduction to Data Science](https://github.com/soodoku/data-science/blob/master/ds1_web.pdf)    
   a. What can Big do for you?  
   b. What is Big Data?  
   c. Implications for Stastistics and Computation  

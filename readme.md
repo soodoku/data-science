@@ -16,6 +16,11 @@ Data Science
          - [Get Cricket Data](https://github.com/soodoku/get-cricket-data)
      - Regular Expressions
      - Pre-process text data
- 3. Databases and SQL 
+ 3. [Databases and SQL](https://github.com/soodoku/data-science/blob/master/ds3_web.pdf)
+     - What are databases? 
+     - Relational Model
+     - Relational Algebra
+     - Basic SQL
+     - Views
  4. Introduction to Statistical Learning
- 5.  Assessing Model Fit
+ 5. Assessing Model Fit

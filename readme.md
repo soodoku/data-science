@@ -22,5 +22,9 @@ Data Science
      - Relational Algebra
      - Basic SQL
      - Views
- 4. Introduction to Statistical Learning
- 5. Assessing Model Fit
+ 4. [Introduction to Statistical Learning](https://github.com/soodoku/data-science/blob/master/ds4_web.pdf)
+     - How to learn from data? 
+     - Nearest Neighbors
+     - When you don't have good neighbors
+     - Assessing model fit
+     - Clarification about Big Data

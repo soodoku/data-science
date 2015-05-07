@@ -16,7 +16,6 @@
     - [Get Cricket Data](https://github.com/soodoku/get-cricket-data)   
   * Regular Expressions  
   * Pre-process text data
-  
 3. Databases and SQL
 
 4. Introduction to Statistical Learning

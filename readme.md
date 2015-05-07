@@ -1,24 +1,52 @@
-## Data Science
+Data Science
+------------
 
-1. [Introduction to Data Science](https://github.com/soodoku/data-science/blob/master/ds1_web.pdf)
-  * What can Big do for you?  
-  * What is Big Data?  
-  * Implications for Stastistics and Computation  
-  * What is Data Science?  
-  * Prerequisites 
+1.  [Introduction to Data Science][1]
 
-2. [Get your own Data](https://github.com/soodoku/data-science/blob/master/ds2_web.pdf)
-  * Scrape web pages and pdfs. ([Scripts](https://github.com/soodoku/python-workshop)] 
-  * Image to Text. ([Script](https://github.com/soodoku/image-to-text))  
-  * Web Scraping Applications:    
-    - [Get Journalist Data](https://github.com/soodoku/get-journalist-data)      
-    - [Get Weather Data](https://github.com/soodoku/get-weather-data)    
-    - [Get Cricket Data](https://github.com/soodoku/get-cricket-data)   
-  * Regular Expressions  
-  * Pre-process text data
+    [1]: <https://github.com/soodoku/data-science/blob/master/ds1_web.pdf>
 
-3. Databases and SQL
+    -   What can Big do for you?
 
-4. Introduction to Statistical Learning
+    -   What is Big Data?
 
-5. Assessing Model Fit
+    -   Implications for Statistics and Computation
+
+    -   What is Data Science?
+
+    -   Prerequisites
+
+2.  [Get your own Data][2]
+
+    [2]: <https://github.com/soodoku/data-science/blob/master/ds2_web.pdf>
+
+    -   Scrape web pages and pdfs. ([Scripts][3])
+
+        [3]: <https://github.com/soodoku/python-workshop>
+
+    -   Image to Text. ([Script][4])
+
+        [4]: <https://github.com/soodoku/image-to-text>
+
+    -   Web Scraping Applications:
+
+        -   [Get Journalist Data][5]
+
+            [5]: <https://github.com/soodoku/get-journalist-data>
+
+        -   [Get Weather Data][6]
+
+            [6]: <https://github.com/soodoku/get-weather-data>
+
+        -   [Get Cricket Data][7]
+
+            [7]: <https://github.com/soodoku/get-cricket-data>
+
+    -   Regular Expressions
+
+    -   Pre-process text data
+
+3.  Databases and SQL
+
+4.  Introduction to Statistical Learning
+
+5.  Assessing Model Fit

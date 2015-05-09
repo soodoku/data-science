@@ -33,14 +33,14 @@ Data Science
 Suggested Books
 --------------------
 
-An Introduction to Statistical Learning: with Applications in R
-By Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+An Introduction to Statistical Learning: with Applications in R  
+By Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani  
 ISBN: 1461471370
 
-Python Programming: An Introduction to Computer Science
-By John Zelle
+Python Programming: An Introduction to Computer Science  
+By John Zelle  
 ISBN: 1590282418
 
-ggplot2: Elegant Graphics for Data Analysis (Use R!)
-By Hadley Wickham
+ggplot2: Elegant Graphics for Data Analysis (Use R!)  
+By Hadley Wickham  
 ISBN: 0387981403

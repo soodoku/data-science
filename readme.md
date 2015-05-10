@@ -33,14 +33,14 @@ Data Science
 Suggested Books
 --------------------
 
-An Introduction to Statistical Learning: with Applications in R  
+[An Introduction to Statistical Learning: with Applications in R](http://www.amazon.com/Introduction-Statistical-Learning-Applications-Statistics/dp/1461471370)    
 By Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani  
 ISBN: 1461471370
 
-Python Programming: An Introduction to Computer Science  
+[Python Programming: An Introduction to Computer Science](http://www.amazon.com/Python-Programming-Introduction-Computer-Science/dp/1887902996)    
 By John Zelle  
 ISBN: 1590282418
 
-ggplot2: Elegant Graphics for Data Analysis (Use R!)  
+[ggplot2: Elegant Graphics for Data Analysis (Use R!)](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403)    
 By Hadley Wickham  
 ISBN: 0387981403

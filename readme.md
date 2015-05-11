@@ -11,9 +11,10 @@ Data Science
      - Scrape web pages and pdfs. ([Scripts](https://github.com/soodoku/python-workshop)) 
      - Image to Text. ([Script](https://github.com/soodoku/image-to-text))
      - Web Scraping Applications:
-         - [Get Journalist Data](https://github.com/soodoku/get-journalist-data)
+         - [Get Data on Journalists](https://github.com/soodoku/get-journalist-data)
          - [Get Weather Data](https://github.com/soodoku/get-weather-data)
          - [Get Cricket Data](https://github.com/soodoku/get-cricket-data)
+     - [Get Congressional Speech Data](https://gist.github.com/soodoku/85d79275c5880f67b4cf) Using the Capitol Words API from the Sunlight Foundation
      - Regular Expressions
      - Pre-process text data
  3. Databases and SQL ([presentation](https://github.com/soodoku/data-science/blob/master/ds3/ds3_present_web.pdf), [tex](https://github.com/soodoku/data-science/blob/master/ds3/ds3.tex))

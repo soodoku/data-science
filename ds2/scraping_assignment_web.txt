@@ -1,0 +1,22 @@
+Do one of the following two projects:
+
+A. Build a database of NYC laws
+	1. Legistar database for NYC: http://legistar.council.nyc.gov/Legislation.aspx
+	2. Here's one way to do it: leave search box empty, use 'all years' and 'all types' from the dropdown menu. When you get the results, click on show and change it to 'show all.' You should get 31,850 records. Now iterate through the results, following each file # link. Each row will in the final dataset will represent a unique "file number." (first column of results)
+
+	We want to build a flat file (e.g. csv) that includes all fields that you can get about the bill. So for instance, you would want to get the text of the legislation where available. And 'legislation details' where available.    
+
+B. Coverage of budget deficits in the NY Times
+	We would like to know how news coverage of budget deficits has changed over time.
+	1. Use the NY Times API (http://developer.nytimes.com/docs/read/article_search_api_v2) to create a monthly time series of coverage of budget deficits issues. To do so you must come up with a list of keywords. Choose keywords carefully.
+	2. Plot the timeseries, interpret the results. 
+ 
+Languages: 
+	R or Python
+
+What to deliver: 
+	Link to github repo.
+	 	a. A well documented script 
+	 	b. A readme file in markdown
+	 	c. Data (in csv)
+	 	d. Output (if asked for) (graph, tables)  

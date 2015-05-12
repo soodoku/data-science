@@ -1,0 +1,308 @@
+\documentclass[compress, black]{beamer}
+\setbeamercolor{normal text}{fg=black}
+\beamertemplatesolidbackgroundcolor{white}
+\usecolortheme[named=black]{structure} 
+\usepackage{caption}
+\captionsetup{labelformat=empty}
+\setbeamertemplate{navigation symbols}{} 
+%\usefonttheme{structurebold}
+\usepackage[scaled]{helvet}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+%\usepackage{beamerthemesplit}
+\usepackage{graphics}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usefonttheme[onlymath]{serif}
+\usepackage{cmbright}
+
+\def\labelitemi{\textemdash}
+\setbeamertemplate{frametitle}{
+	\begin{centering}
+		\vskip15pt
+		\insertframetitle
+		\par
+	\end{centering}
+} 
+\title[DS]{Introduction to Statistical Learning}
+\author[Sood]{Gaurav~Sood}
+  \large
+\date[2015]{Spring 2015}
+\subject{LearnDS}
+\begin{document}
+\newcommand{\multilineR}[1]{\begin{tabular}[b]{@{}r@{}}#1\end{tabular}}
+\newcommand{\multilineL}[1]{\begin{tabular}[b]{@{}l@{}}#1\end{tabular}}
+\newcommand{\multilineC}[1]{\begin{tabular}[b]{@{}c@{}}#1\end{tabular}}
+
+\newenvironment{large_enum}{
+\Large
+\begin{itemize}
+  \setlength{\itemsep}{7pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+\begin{comment}
+
+	setwd(paste0(basedir, "github/data-science/ds4/"))
+	tools::texi2dvi("ds4_web.tex", pdf=TRUE,clean=TRUE)
+	setwd(basedir)
+
+\end{comment}
+  \frame
+  {
+    \titlepage
+  }
+
+\frame{
+	\frametitle{Two paradigms of learning}
+	\begin{large_enum}
+	\item[--]<2->Supervised Learning
+		\begin{enumerate}
+			\item[--]<3->When getting labels (predictions) is expensive
+			\item[--]<4->Get labels for a small set of data
+			\item[--]<5->Estimate relationship between $Y$ and $X$
+			\item[--]<6->Predict labels of unseen data
+			\item[--]<7->Labels and cost function \emph{supervise} \alert{dimension reduction}
+		\end{enumerate}
+	\item[--]<8->Unsupervised Learning
+		\begin{enumerate}
+			\item[--]<9->Find vectors similar to each other, maximize differences across
+			\item[--]<10->Find rows similar to each other, maximize differences across
+		\end{enumerate}
+	\end{large_enum}
+}
+
+\frame{
+	\frametitle{How to learn from data?}
+	\begin{large_enum}
+		\item[--]<1->$Y = f(X) + \epsilon$
+		\item[--]<2->How do we estimate $f(X)$?
+		\item[--]<3->If similar $x$, similar $y$
+		\item[--]<4->Function: value of $y$ same as that of the nearest neighbor
+		\item[--]<5->Question and a concern
+			\begin{enumerate}
+				\item[--]<6->What do we mean by nearest?
+				\item[--]<7->Wouldn't it depend on what $x$ are observed? 
+			\end{enumerate}
+	\end{large_enum}
+}
+
+\frame{
+	\frametitle{What do we mean by nearest?}
+	\begin{large_enum}
+		\item[-]<2-> Euclidean distance: If $p$ and $q$ are two $n$ dimensional vectors \\\normalsize
+						$d_e(p,q) = \sqrt{\sum\limits_{i=1}^n (q_i - p_i)^2}$
+		\item[-]<3-> Some issues:
+				\begin{itemize}
+					\item[-]<4-> Not all features on the same scale
+					\item[-]<5-> Features may be correlated with each other
+				\end{itemize}
+		\item[-]<6-> Mahalanobis distance between two vectors:\\\normalsize
+						Say S is the covariance matrix\\
+						$d_m(\vec{p},\vec{q}) = \sqrt{(\vec{p}- \vec{q})'S^{-1}(\vec{p} - \vec{q})}$
+		\item[-]<7-> For Boolean, Jaccard distance:\\\normalsize
+						$d_j(p,q) = \frac{\lvert p \cup q \rvert - \lvert p \cap q \rvert}{\lvert p \cup q \rvert} $ \\\pause
+						Applications: Recommender systems, finding similar documents etc.
+	\end{large_enum}
+}
+
+\frame{
+	\frametitle{Learning from data}
+	\begin{large_enum}
+		\item[--]<1->$Y = f(X) + e$
+		\item[--]<2->Problem formulated as a regression function \pause \pause
+			\begin{enumerate}
+				\item[--]<4->$E(Y|X)$\\
+				\item[--]<5->$f(x) = E(Y|x=x)$
+			\end{enumerate}
+		\item[--]<6->Nearest neighbour averaging\\\normalsize
+				 $\hat{f}(x) = E[Y|X \in N(x)]$
+		\item[--]<7->Great when small $p$, large $N$
+	\end{large_enum}
+}
+
+\frame{
+	\frametitle{Curse of Dimensionality}
+	\begin{large_enum}
+		\item[--]<1->$\hat{f}(x) = E[Y|X \in N(x)]$
+		\item[--]<2->Define neighborhood too tightly, nothing in there. 
+		\item[--]<3->If we expand it, nearest neighbors can be far away
+		\item[--]<4->How do we solve the problem?
+		\item[--]<5->One way: parametric and structural models\\
+			$f(x) = \beta_0 + \beta_1*X_1 + \beta_2*X_2 + .....\beta_p*X_p$
+	\end{large_enum}
+}
+\frame{
+	\frametitle{How to expand the linear model?}
+	\begin{large_enum}
+		\item[-]<1-> Simple polynomial transformations
+		\item[-]<2-> Interactions
+		\item[-]<3-> Step functions. E.g. transform education into $k$ dummy variables. 
+		\item[-]<4-> More complicated basis functions:
+			\begin{itemize}
+				\item[-]<5-> Piecewise polynomial: takes differential polynomial for different regions (split by knots) 
+				\item[-]<6-> Add constraint that there are no abrupt changes across regions.
+				\item[-]<7-> Add constraint that first and second derivates are the same. (For cubic splines.)
+				\item[-]<8-> Add boundary constraint: linear before 1st knot or after last knot. (Natural spline.)
+			\end{itemize}
+	\end{large_enum}
+}
+
+\frame{
+	\frametitle{Error}
+	\begin{large_enum}
+		\item[--]<2->Reducible error:\\\normalsize
+					 $Var(\hat{f})$ + [\text{Bias}$(E[\hat{f}(x) - f(x)])]^2$
+		\item[--]<3->Bias-Variance tradeoff
+		\item[--]<4->As flexibility increases, $Var(\hat{f})$ increases\\\normalsize
+					 Model goes after each wrinkle in the training data
+		\item[--]<5->Say we have estimated the ideal function $\hat{f}(X)$
+		\item[--]<6->Ideal w.r.t a loss function, e.g., average squared error: $(Y - \hat{Y})^2$
+		\item[--]<7->Ideal still leaves some error (irreducible error):
+				\begin{enumerate}
+				\item[--]<7->$\epsilon = Y - \hat{f}(x)$
+				\item[--]<8->$E[(Y - \hat{f}(X)^2|X =x)] = (f(x) - \hat{f}(X))^2 + Var(\epsilon) $
+				\end{enumerate}	
+	\end{large_enum}
+}
+
+\frame{
+	\frametitle{Evaluating Models}
+		\begin{large_enum}
+			\item[--]<2->Deviance
+				\begin{itemize}
+				\item[--]<2-> Deviance $\propto -$Log-Likelihood
+				\item[--]<3-> Likelihood: $p(y_1|x_1) x p(y_2|x_2) x ... x p(y_n|x_n)$
+				\item[--]<4-> $\hat{\beta}$ maximize Likelihood (or minimize Deviance)
+				\item[--]<5-> $R^2 = \frac{\text{Deviance of Fitted Model}}{\text{Deviance of Null Model}}$
+				\end{itemize}
+			\item[--]<6->AIC
+				\begin{itemize}
+					\item[--]<7-> $\text{Deviance} + 2*\text{df}$
+					\item[--]<8-> In-sample - Out of sample Deviance $\sim$ $2*\text{df}$
+					\item[--]<9-> AIC $\sim$ Out of sample Deviance
+					\item[--]<10-> AIC overfits in high dimensions (df $\sim$ n).
+					\item[--]<11-> AICc = $\text{Deviance} + 2*\text{df}*\frac{n}{n - df- 1}$
+					\item[--]<12-> BIC = $\text{Deviance} + \text{df}*log(n)$
+					\item[--]<12-> BIC underfits when large $n$.
+				\end{itemize}
+	\end{large_enum}
+}
+
+\frame{
+	\frametitle{Evaluating Classification Models}
+		\begin{table}[!htb] 
+		\small
+		\centering
+		\begin{tabular}{|cc|cc|}
+			\hline
+			   			& 		 & \multicolumn{2}{c|}{\textbf{Observed}} \\
+			   			& 		 & true 			& false\\[0.5ex]
+				\cline{2-4}
+				\textbf{Predicted}  & true    &   true positive   & false positive\\[0.5ex]
+				        & false   &   false negative  & true negative\\[0.5ex]
+			    \hline
+		\end{tabular}
+		\end{table}
+		
+		\begin{large_enum}
+			\item[--]<2->Confusion matrix, $c^2 -c$ total possible errors 
+			\item[--]<3->Accuracy:   $\frac{TP + TN}{TP + TN + FP + FN}$ 
+			\item[--]<4->Error Rate: $\frac{FP + FN}{TP + TN + FP + FN}$ 
+			\item[--]<5->Sensitivity, TPR: $\frac{TP}{TP + FN}$
+			\item[--]<6->Specificity, FPR: $\frac{TN}{FP + TN}$
+			\item[--]<7->BER: $\frac{1}{2}(TPR + TNR)$
+		\end{large_enum}
+}
+
+\frame{
+	\frametitle{Evaluating Classification Models}
+		\begin{large_enum}
+			\item[--]<1->ROC: TPR Vs. FPR
+			\item[--]<2->Precision: fraction of retrieved instances that are relevant\\\normalsize
+						 $\frac{TP}{TP + FP}$ 
+			\item[--]<3->Recall: fraction of relevant instances that are retrieved\\\normalsize
+					  	 $\frac{TP}{TP + FN}$ 
+			\item[--]<4->$F_1$: 	$2\frac{\text{precision*recall}}{\text{precision + recall}}$ 
+			\item[--]<5->$F_\beta$: $(1 + \beta^2) \frac{\text{precision*recall}}{\beta^2\text{precision + recall}}$ 
+		\end{large_enum}
+}
+
+\frame{
+	\frametitle{Out of Sample Error}
+	\begin{large_enum}
+		\item[--]<1->Another way to assess model error
+		\item[--]<2->$R^2$ always increases with more covariates. 
+		\item[--]<3->Or: As model complexity increases, training error goes down. 
+		\item[--]<4->But out of sample error goes down and then up.
+		\item[--]<5->Out of sample $R^2$ can be worse than $\bar{y}$. 
+		\item[--]<6->Use of out of sample error to prevent overfitting 
+		\item[--]<7->Net prediction error on test set can vary a lot. 
+	\end{large_enum}
+}
+\frame{
+	
+	\center{\Large A Clarification}
+}
+\frame{
+	\frametitle{Error in thinking about errors}
+	\begin{large_enum}
+		\item[--]<2->In sciences, `data mining' is a dirty `phrase'
+		\item[--]<3->Jealousy?
+		\item[--]<4->Evokes concerns about false positives \ldots
+		\item[--]<5->But `mining' is by definition `the extraction of valuable [stuff]' 
+		\item[--]<6->So -- is more data worse?
+		\item[--]<7->Not quite
+		\item[--]<8->Larger $n$ allows for more precise estimation of relationship
+	\end{large_enum}
+}
+
+\frame{
+	\frametitle{False Positives}
+	\begin{large_enum}
+		\item[--]<1->Significance testing: 
+			\begin{enumerate}
+				\item[--]<2->Say .05, 5\% false positive rate
+				\item[--]<3->Assume independence, 1 of 20 false positive
+				\item[--]<4->Say 100 vars, 5 true positives, all sig., 5\% of 95 $\sim$ 5. So 50\% \alert{false discovery rate}. 
+			\end{enumerate}
+		\item[--]<5->Fixes:
+			\begin{enumerate}
+				\item[--]<6->Familywise error rate (Bonferroni)
+				\item[--]<7->Optimization can be done w.r.t. to cost of false positive and negative \\
+							e.g. Increase cut-off marks in exams, \href{http://www.cancer.gov/cancertopics/pdq/screening/breast/healthprofessional/page8}{Breast Cancer}
+				\item[--]<8->False Discovery Rate
+			\end{enumerate}
+	\end{large_enum}
+}
+
+\frame{
+	\frametitle{False Discovery Rate}
+	\begin{large_enum}
+		\item[]<1->\begin{equation*}\text{False discovery Proportion} = \frac{\text{\# of FP}}{\text{\# of Sig. Results}}\end{equation*}
+		\item[--]<2->Can't be known but we can produce cutoffs so $E(FDP) < q$
+		\item[--]<3->Benjamini and Hochberg (1995): 
+				\begin{enumerate}
+					\item[--]<4->Rank the $n$ $p$-values, smallest to largest, $p_1$ \ldots $p_n$.
+					\item[--]<5->$p$-value cut-off = max ($p_k: p_k \leq \frac{qk}{n}$)
+					\item[--]<6->All $p$-values below that accepted
+					\item[--]<7->Caveat: Assumes independence
+				\end{enumerate} 
+	\end{large_enum}
+}
+
+\frame{
+	\frametitle{Other Ways of Being Wrong}
+	\begin{large_enum}
+		\item[--]<1->Sampling
+		\item[--]<2->Changing data generating process over time
+		\item[--]<3->Confounding variables (`data leakage')
+		\item[--]<4->Coding and computational errors
+	\end{large_enum}
+}
+\end{document}

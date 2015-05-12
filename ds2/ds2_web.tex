@@ -1,0 +1,486 @@
+\documentclass[compress, black]{beamer}
+\setbeamercolor{normal text}{fg=black}
+\beamertemplatesolidbackgroundcolor{white}
+\usecolortheme[named=black]{structure} 
+\usepackage{caption}
+\captionsetup{labelformat=empty}
+\setbeamertemplate{navigation symbols}{} 
+%\usefonttheme{structurebold}
+\usepackage[scaled]{helvet}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+%\usepackage{beamerthemesplit}
+\usepackage{graphics}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usefonttheme[onlymath]{serif}
+\usepackage{cmbright}
+
+\def\labelitemi{\textemdash}
+\setbeamertemplate{frametitle}{
+	\begin{centering}
+		\vskip15pt
+		\insertframetitle
+		\par
+	\end{centering}
+} 
+\title[DS]{Get, Clean Data}
+\author[Sood]{Gaurav~Sood}
+  \large
+\date[2015]{Spring 2015}
+\subject{LearnDS}
+\begin{document}
+\newcommand{\multilineR}[1]{\begin{tabular}[b]{@{}r@{}}#1\end{tabular}}
+\newcommand{\multilineL}[1]{\begin{tabular}[b]{@{}l@{}}#1\end{tabular}}
+\newcommand{\multilineC}[1]{\begin{tabular}[b]{@{}c@{}}#1\end{tabular}}
+
+\newenvironment{large_enum}{
+\Large
+\begin{itemize}
+  \setlength{\itemsep}{7pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+\begin{comment}
+
+	setwd(paste0(basedir, "github/data-science/ds2/"))
+	tools::texi2dvi("ds2_web.tex", pdf=TRUE,clean=TRUE)
+	setwd(basedir)
+
+\end{comment}
+
+ \frame
+  {
+    \titlepage
+  }
+ 
+\frame{
+	\frametitle{Data, Data, Everywhere}
+	 \begin{large_enum}
+		\item[--]<2->The Famous Five:\\\normalsize
+					  Aural, Visual, Somatic, Gustatory, Olfactory		
+		\item[--]<3->The Social Famous Five:\\\normalsize
+					  What people (like to) hear, see, sense, smell, taste, \ldots
+		\item[--]<4->Manifest Data:\\\normalsize
+					  Likes, Ratings, Reviews, Comments, Views, Searches \ldots
+		\item[--]<5->Data about data:\\\normalsize
+					  Location of a tweet, photo, who called whom, \ldots
+		\item[--]<6->Social data:\\\normalsize
+					  Friend graph, followers, who retweeted, liked,\ldots
+		\item[--]<7->Data about structure:\\\normalsize\vspace{-.4\baselineskip} Layout of the site, In/out links, \ldots 
+	\end{large_enum}
+}
+	
+\frame{
+	\frametitle{Collecting Digital Data}
+	 \begin{large_enum}
+		 \item[--]<1->Proprietary Data collections\\\normalsize
+		 			 Lexis-Nexis, comScore \ldots
+		 \item[--]<2->APIs	\\\normalsize
+		 			 Facebook, \href{http://developer.nytimes.com/docs}{NY Times}, Twitter, Google, FourSquare, \href{dfr.jstor.org}{Jstor}, Zillow \ldots
+	 	 \item[--]<3->Bulk Downloads \\\normalsize
+		 			 Wikipedia, data.gov, IMDB, Million Song Database,  Google n-grams \ldots
+		 \item[--]<4->Scraping
+		 \item[--]<5->Custom Apps\\\normalsize Build custom apps to observe behavior, get (pay) people to download these apps
+	 \end{large_enum}
+}
+
+\frame{
+	\frametitle{Scraping}
+	 \begin{large_enum}
+		 \item[--]<1->To analyze data, we typically need structure.\\\normalsize 
+		 			  For instance, same number of rows for each column.
+		 \item[--]<2->But found data often with human readable structure.
+		 \item[--]<2->Copy and paste, type, to a dataset.
+		 \item[--]<4->But error prone, and not scalable. 
+		 \item[--]<5->\alert{Idea:} Find the less accessible structure, automate based on it.  
+	 \end{large_enum}
+}
+
+\frame{
+	\frametitle{Collecting Found Digital Data}
+	\begin{large_enum}
+	 \item[-]<1->Software
+	 			\begin{enumerate}
+	 			\item[-]<2->R - Not the best but will do.
+				\item[-]<3->Python, Ruby, Perl, Java, \ldots
+				\item[-]<4->30 Digits, 80 Legs, Grepsr \ldots
+				\end{enumerate}
+	  \item[-]<5->Some things to keep in mind
+	  			\begin{enumerate}
+	 			\item[-]<6->Check if there is an API, or if data are available for download
+	 			\item[-]<7->Play Nice: \\\pause \pause \pause \pause \pause \pause \pause 
+	 						- Scraper may be disallowed in `robots.txt' \\ \pause 
+	 						- Build lag between requests. \alert{Make lags random.}\\\pause 
+	 						- Scrape during off-peak hours
+	 			\end{enumerate}
+	 \end{large_enum}
+	 			
+}
+
+\begin{frame}
+\frametitle{Paper}
+\only<1>{\scalebox{0.35}{\includegraphics{ScannedBook.png}}}
+\only<2->{
+	\begin{large_enum}
+	\item[-]<2-> Create digital images of paper
+	\item[-]<3-> Identify colored pixels as characters (OCR) 
+	\item[-]<4-> Software
+		\begin{enumerate}
+		 \item[-]<5->Adobe Pro., etc. 
+		 \item[-]<6->Best in class commercial: Abbyy FineReader \\
+		 			  Now has an API 
+	 	 \item[-]<7->Best in class open-source: Tesseract
+		\end{enumerate}
+	\item[-]<8->Scrape off recognized characters: pyPdf etc.
+	\item[-]<9->Post-processing
+	\end{large_enum}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pictures, Audio, and Video}
+	\begin{large_enum}
+		\item[-]<1->Audio (or Video with audio) to text: Dragon Dictates, Google transcription 
+		\item[-]<2->Pictures: recognize color, faces 
+		\item[-]<3->Objects in images: \href{clarifai.com}{Clarifai}
+		\item[-]<4->Scrape closed-captions
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}
+\frametitle{Get Others to Work}
+	\begin{large_enum}
+		\item[-]<1->Human Computing
+		\item[-]<2->Amazon.com's Mechanical Turk
+			\begin{enumerate}
+				\item[-]<3-> Create Human Intensive Tasks (HITs)
+				\item[-]<4-> \href{https://www.mturk.com/mturk/findhits?match=false}{Surveys, transcription, translation, \ldots}
+				\item[-]<5-> You assess the work and pay out 
+			\end{enumerate}
+		\item[-]<6->Odesk, elance, impact sourcing, run your own ads \ldots
+		\item[-]<7->\href{http://www.google.com/insights/consumersurveys/home}{Google} -- surveys as payment for content
+\end{large_enum}
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Scraping one HTML page in Python} 
+
+Shakespeare's Twelfth Night\\
+Using \href{http://www.crummy.com/software/BeautifulSoup/}{Beautiful Soup}
+\small
+	\begin{enumerate}
+		\item[]<2->\begin{verbatim} from BeautifulSoup import BeautifulSoup \end{verbatim}
+		\item[]<3->\begin{verbatim} from urllib import urlopen \end{verbatim}
+		\item[]<3->
+		\item[]<4->\begin{verbatim} url  = urlopen(`http://bit.ly/1D7wKcH').read()\end{verbatim}
+		\item[]<5->\begin{verbatim} soup = BeautifulSoup(url)\end{verbatim}
+		\item[]<6->\begin{verbatim} text = soup.p.contents\end{verbatim}
+		\item[]<7->\begin{verbatim} print text\end{verbatim}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Getting text from one pdf in Python} 
+
+A Political Ad\\
+Using \href{http://pybrary.net/pyPdf/}{PyPdf}
+\small
+	\begin{enumerate}
+		\item[]<1->\begin{verbatim} import pyPdf \end{verbatim}
+		\item[]<2->
+		\item[]<2->\begin{verbatim} pdf = pyPdf.PdfFileReader(file('path to pdf', `rb'))\end{verbatim}
+		\item[]<3->\begin{verbatim} content = pdf.getPage(0).extractText()\end{verbatim}
+		\item[]<4->\begin{verbatim} print content\end{verbatim}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Scraping many urls/files to structured data}
+	\begin{large_enum}
+		\item[-]<1->Loop, exploiting structure of the urls/file paths\\\normalsize \pause
+					 e.g. \href{http://search.espncricinfo.com/ci/content/match/search.html?search=odi;all=1;page=1}{ESPN URL}
+		\item[-]<3->Handle errors, if files or urls don't open, what do you do?
+		\item[-]<4->To harvest structured data, exploit structure within text
+		\item[-]<5->Trigger words, html tags, \ldots 
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Exception(al) Handling}
+	\begin{enumerate}
+		\item[]<1->\begin{verbatim}try: \end{verbatim}
+		\item[]<1->\begin{verbatim}     pdf = pyPdf.PdfFileReader(file(pdfFile, 'rb')) \end{verbatim}
+		\item[]<2->\begin{verbatim}except Exception, e:\end{verbatim}
+		\item[]<2->\begin{verbatim}     return `Cannot Open: %s with error: %s' % 
+												(pdfFile, str(e))\end{verbatim}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Inside the page}
+	\begin{enumerate}
+		\item[-]<1->Chrome Developer Tools
+		\item[-]<2->Quick Tour of HTML
+			\begin{enumerate}
+			\item[-]<3->Tags begin with < and end with >
+			\item[-]<4->Tags usually occur in pairs. Some don't (see img). And can be nested.
+			\item[-]<5->\href{https://developer.mozilla.org/en-US/docs/Web/HTML/Element}{Mozilla HTML elements}
+			\item[-]<6-><p> is for paragraph
+			\item[-]<7-><a> is for a link
+			\item[-]<8-><ol>, <ul> is for ordered, unordered list; <li> is a bullet
+			\item[-]<9->tags can have attributes. <a href='http://somesite'></a>
+			\item[-]<10->DOM, hierarchical, parent, child:
+						\begin{verbatim} 
+									<html>
+									    <body>
+									        <p></p>
+									    </body>
+									</html>
+				\end{verbatim}
+		\end{enumerate}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Find Things}
+	\begin{enumerate}
+		\item[]<1->Navigate by HTML tags: \begin{verbatim} soup.title, soup.body, soup.body.contents \end{verbatim}
+		\item[]<2->Search HTML tags: 	  \begin{verbatim} soup.find_all('a'), soup.find(id="nav1") \end{verbatim}
+		\item[]<3->
+		\item[]<3->So to get all the urls in a page:
+		\item[]<4->\begin{verbatim} for link in soup.find_all('a'): \end{verbatim}
+		\item[]<4->\begin{verbatim}      print(link.get('href'))	 \end{verbatim}						
+		\item[]<4->
+		\item[]<5->\href{http://www.crummy.com/software/BeautifulSoup/bs4/doc/}{Beautiful Soup Documentation}
+	\end{enumerate}
+\end{frame}
+
+\frame{
+	\frametitle{Data Munging}
+	\Large
+		``Data scientists, according to interviews and expert estimates, spend from \alert{50 percent to 80 percent of their time mired in the mundane labor of collecting and preparing data}, before it can be explored for useful information.''\\\vspace{5em}
+
+		\small \href{http://www.nytimes.com/2014/08/18/technology/for-big-data-scientists-hurdle-to-insights-is-janitor-work.html}{New York Times: For BigData Scientists, `Janitor Work' Is Key Hurdle to Insights}
+}
+\frame{
+	\frametitle{Data Munging}
+	\Large
+	``In our experience, the tasks of \alert{exploratory data mining and data cleaning constitute 80\% of the effort} that determines 80\% of the value of the ultimate data.''\\\vspace{5em}
+
+	\small Dasu and Johnson, Exploratory Data Mining and Data Cleaning
+}
+
+\frame{
+	\frametitle{Regular (or Rational) Expressions}
+	\begin{large_enum}
+		\item[-]<1-> Formal language for specifying text strings
+		\item[-]<2-> Stephen Kleene, `inventor' of regular expressions.
+		\item[-]<3-> Henry Spencer, behind the {\tt regex} library.
+		\item[-]<4-> Descend from {\it finite automata} theory.
+		\item[-]<5-> Matching
+	\end{large_enum}
+}
+
+\begin{frame}
+	\frametitle{The most basic regular expression}
+	\begin{large_enum}
+		\item[-]<1->String literal
+		\item[-]<2->\href{http://regexpal.com}{RegexPal.com}
+		\item[-]<2->Say you are searching for the word apple -- can be uppercase first character, plural, lowercase first character
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Disjunction}
+	\begin{large_enum}
+		\item[-]<1->Disjunction, Character classes
+				\begin{enumerate}
+				\item[-]<2-> \begin{verbatim} [] \end{verbatim}
+				\item[-]<3-> \begin{verbatim} [aA]pple matches apple and Apple \end{verbatim}
+				\item[-]<4-> \begin{verbatim} [0123456789]  matches any digit \end{verbatim}
+				\end{enumerate}
+		\item[-]<5->Ranges
+			\begin{enumerate}
+				\item[-]<6-> \begin{verbatim} [0-9]  matches any digit \end{verbatim}
+				\item[-]<7-> \begin{verbatim} [a-z], [[:lower:]]  matches any lowercase \end{verbatim}
+				\item[-]<8-> \begin{verbatim} [a-zA-Z], [[:alpha:]]  matches any uppercase \end{verbatim}
+				\item[-]<9-> \begin{verbatim} [a-e1-9]  matches any letter or digit \end{verbatim}
+				\item[-]<10-> Hyphen only has a special meaning if used within range. \begin{verbatim} [-123] \end{verbatim}
+			\end{enumerate}
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Disjunction Contd..}
+	\begin{large_enum}
+	\item[-]<1->Negation in Disjunction\\\normalsize
+			\begin{enumerate}
+			\item[-]<2-> \begin{verbatim} ^ right after the square bracket means a negation \end{verbatim}
+			\item[-]<3-> \begin{verbatim}  [^A-Z] \end{verbatim}
+			\item[-]<4-> \begin{verbatim}  [^Aa] means neither a capital A nor a lowercase a \end{verbatim}
+			\item[-]<5-> \begin{verbatim}  [^e^] means not an e, and not ^ \end{verbatim}
+			\end{enumerate}
+	\item[-]<6->Disjunction for longer strings\\\normalsize
+			\begin{enumerate}
+			    \item[-]<7-> \begin{verbatim}  pipe \end{verbatim}
+				\item[-]<8-> \begin{verbatim}  a|b|c = [abc] \end{verbatim}
+				\item[-]<9-> \begin{verbatim}  apple|pie \end{verbatim}
+				\item[-]<10-> \begin{verbatim}  [aA]pple|[aA]nd \end{verbatim}
+			\end{enumerate}
+	\end{large_enum}
+\end{frame}
+\begin{frame}[fragile]
+	\frametitle{Special characters}
+	\begin{large_enum}
+	\item[-]<1->? - previous character is optional: colou?r - color, colour
+	\item[-]<2-> . matches any character\\
+				  e.g. beg.n matches begun, begin, began
+	\item[-]<3->Kleene Operators - named after Steven Kleene
+			\begin{enumerate}
+			\item[-]<4->*  matches 0 or more of the previous characters\\
+						e.g. oo*h will match ooh, oooh, etc.\\
+						(abc)* will match abc, abcabc, etc.
+			\item[-]<5->+  matches 1 or more of the previous characters\\
+						e.g. o+h will match ooh, oooh, etc. 
+			\end{enumerate}
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Repetition Ranges}
+	\begin{enumerate}
+	\item[-]<1-> Specific ranges can also be specified
+	\item[-]<2-> \small \begin{verbatim} { } to specify range for the immediately preceding regex \end{verbatim}
+	\item[-]<3-> \begin{verbatim} {n}  means exactly n occurrences \end{verbatim}
+	\item[-]<4-> \begin{verbatim} {n,} means at least n occurrences \end{verbatim}
+	\item[-]<5-> \begin{verbatim} {n,m} means at least n and no more than m occurrences \end{verbatim}
+	\item[-]<6-> Example: \begin{verbatim} . {0, } = .* \end{verbatim}	
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{large_enum}
+	\frametitle{More Regex}
+	\item[-]<1->Anchors
+			\begin{enumerate}
+			\item[-]<2-> $^$ matches the beginning of the line\\
+	 			  e.g. \begin{verbatim} ^[A-Z] matches a captial letter at the start of a line.\end{verbatim}
+			\item[-]<3-> \$ matches the end of the line.
+			\end{enumerate}
+	\item[-]<4-> \begin{verbatim} \. means a period \end{verbatim} 
+	\item[-]<5-> Example: look for the word `the'
+	\begin{enumerate}
+		\item[-]<6->missed capitalization: [tT]he
+		\item[-]<7->make pattern more precise: \\
+					\begin{verbatim} [tT]he[^A-Za-z], ^[tT]he[^A-Za-z] \end{verbatim}
+	\end{enumerate}
+	\end{large_enum}
+\end{frame}
+
+\frame{
+\frametitle{False Positive and Negatives}
+	\begin{large_enum}
+	\item[-]<1->False positives or Type 1 errors - matching things we shouldn't match
+	\item[-]<2->False negatives or Type 2 errors - not matching things we should match
+	\item[-]<3->Cost attached to false negative and positive
+	\item[-]<4->Provide some metrics by comparing against good data for a small sample
+	\end{large_enum}
+}
+
+\frame{
+	\frametitle{Edit Distance}
+	\begin{large_enum}
+		\item[-]<1->pwned -> owned or pawned?
+		\item[-]<2->standd -> strand, stand, stood, or sand?
+		\item[-]<3->How similar are two strings?
+		\item[-]<4->Applications
+			\begin{enumerate}
+			\item[-]<5->Spell Correction
+			\item[-]<6->Also comes up in computational biology
+			\item[-]<7->Machine translation
+			\item[-]<8->Information extraction
+			\item[-]<9->Speech recognition
+			\end{enumerate}
+	\end{large_enum}
+}
+\frame{
+	\frametitle{Edit Distance}
+	\begin{large_enum}
+		\item[-]<1->Typically refers to minimum edit distance
+		\item[-]<2->Minimum number of editing operations to convert one string to another
+			\begin{enumerate}
+				\item[-]<3->Insertion
+				\item[-]<3->Deletion
+				\item[-]<3->Substitution
+			\end{enumerate}
+		\item[-]<3->e.g. two strings: intention, execution 
+			\begin{enumerate}
+				\item[-]<4->align it with second letter
+				\item[-]<5->d (delete), s (substitute), s, i(nsert), s
+				\item[-]<6->if each operation costs 1, edit distance = 5
+				\item[-]<7->if substitition cost 2 (levenshtein distance), distance = 8
+			\end{enumerate}
+		\item[-]<8->You can implement this at word level so Microsoft Corp. is 1 away from Microsoft.
+	\end{large_enum}
+}
+
+\frame{
+	
+	\center \Huge Text Processing
+}
+
+\frame{
+	\frametitle{Text as Data}
+	\begin{large_enum}
+		\item[-]<1->Bag of words assumption\\\normalsize
+					Lose word order
+		\item[-]<2->Remove stop words:\\\normalsize
+					If, and, but, who, what, the, they, their, a, or, \ldots\\
+					\alert{Be careful: one person's stopword is another's key term.}
+		\item[-]<3->(Same) Word: Stemming and Lemmatization\\\normalsize
+					Taxing, taxes, taxation, taxable $\leadsto$ tax
+		\item[-]<4->Remove rare words\\\normalsize
+					$\sim$ .5\% to 15\%, depending on application\\
+		\item[-]<5->Convert to lowercase, drop numbers, punctuation, etc.
+	\end{large_enum}
+}
+
+\begin{frame}[fragile]
+	\frametitle{How?}
+	Using Natural Language Toolkit (\tt{nltk})
+	\begin{itemize}
+			\item[-]<2->\textbf{Lowercase}: 
+ 					 	\begin{verbatim}text = text.lower() \end{verbatim} 
+ 			\item[-]<3->\textbf{Remove stop words}:
+	 			\item[]<4->\begin{verbatim}swords = stopwords.words('english') \end{verbatim}
+	 			\item[]<5->\begin{verbatim}words  = wordpunct_tokenize(text) \end{verbatim}
+	 			\item[]<6->\begin{verbatim}words  = [w for w in words if w not in swords] \end{verbatim}
+	    		\item[]<7->\begin{verbatim}text = ' '.join(words) \end{verbatim}
+ 			\item[-]<8->\textbf{Stemming}: 
+ 				\item[]<9->\begin{verbatim}st = EnglishStemmer() \end{verbatim}
+ 				\item[]<10->\begin{verbatim}words = wordpunct_tokenize(text) \end{verbatim}
+    			\item[]<11->\begin{verbatim}words = [st.stem(w) for w in words] \end{verbatim}
+    			\item[]<12->\begin{verbatim}text = ' '.join(words) \end{verbatim}
+		\end{itemize}
+\end{frame}
+\begin{frame}[fragile]
+	\frametitle{To Matrices}
+	\begin{itemize}
+			\item[-]<2->n-grams
+					\begin{verbatim}
+						from nltk import bigrams, trigrams, ngrams
+						text = word tokenize(text)
+						text_bi  = bigrams(text)
+					\end{verbatim}
+	\end{itemize}
+\end{frame}
+
+\end{document}

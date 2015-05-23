@@ -35,8 +35,10 @@ Data Science
      - Clarification about Big Data
 
  5. Presenting Analyses
-    - [ggplot2 in Brief](graphs/ggplot2.md)
-    - [Suggestions For Writing](http://gbytes.gsood.com/on-writing/)
+    - [ggplot2 in brief](graphs/ggplot2.md)
+    - Examples of ggplot in action: 
+        - NYT Civil Rights Coverage ([R code](https://github.com/soodoku/nyt-civil-rights/blob/master/plot.R), [Graph](https://github.com/soodoku/nyt-civil-rights/blob/master/nyt_aa.pdf))
+    - [Suggestions for writing](http://gbytes.gsood.com/on-writing/)
 
 Suggested Books
 --------------------

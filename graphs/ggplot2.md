@@ -1,5 +1,20 @@
-Synopsis of ggplot2 book by Hadley Wickham
-===========================================
+Summary of ggplot2
+==================
+
+### Efficient Summary of ggplot2 by Hadley Wickham
+
+#### TOC:
+
+1. [Introduction](#chapter-1-introduction)
+2. [qplot]()
+3. [Mastering the Grammar]()
+4. [Build a Plot Layer by Layer]()
+5. [Toolbox]()
+6. [Scales, Axes, and Legends]()
+7. [Positioning]()
+8. [Polishing Your Plots for Publication]()
+9. [Manipulating Data]()
+10. [Reducing Duplication]()
 
 Chapter 1: Introduction
 -------------------------
@@ -114,7 +129,6 @@ qplot(x, y, data=data,
 
 ```
 
-
 Chapter 3: Mastering the Grammar
 -----------------------------------
 
@@ -130,35 +144,35 @@ Basics:
 
 
 
-Chapter 4: Mastering the Grammar
+Chapter 4: Build a Plot Layer by Layer
+---------------------------------------
+
+
+
+Chapter 5: Toolbox
 -----------------------------------
 
 
 
-Chapter 5: Mastering the Grammar
+Chapter 6: Scales, Axes, and Legends
 -----------------------------------
 
 
 
-Chapter 6: Mastering the Grammar
+Chapter 7: Positioning
 -----------------------------------
 
 
 
-Chapter 7: Mastering the Grammar
+Chapter 8: Polishing Your Plots for Publication
+------------------------------------------------
+
+
+
+Chapter 9: Manipulating Data
 -----------------------------------
 
 
 
-Chapter 8: Mastering the Grammar
------------------------------------
-
-
-
-Chapter 9: Mastering the Grammar
------------------------------------
-
-
-
-Chapter 10: Mastering the Grammar
+Chapter 10: Reducing Duplication
 -----------------------------------

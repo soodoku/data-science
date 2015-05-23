@@ -34,9 +34,9 @@ Data Science
      - Assessing model fit
      - Clarification about Big Data
 
-5. Presenting Analyses
-    - [ggplot2](graphs/ggplot2.md)
-    - [On writing](http://gbytes.gsood.com/on-writing/)
+ 5. Presenting Analyses
+    - [ggplot2 in Brief](graphs/ggplot2.md)
+    - [Suggestions For Writing](http://gbytes.gsood.com/on-writing/)
 
 Suggested Books
 --------------------

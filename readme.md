@@ -1,13 +1,14 @@
 Data Science
-============
+=============
 
- 1. Introduction to Data Science ([presentation](https://github.com/soodoku/data-science/blob/master/ds1/ds1_present_web.pdf), [tex](https://github.com/soodoku/data-science/blob/master/ds1/ds1_web.tex))
+ 1. Introduction to Data Science ([presentation](https://github.com/soodoku/data-science/ds1/ds1_present_web.pdf), [tex](https://github.com/soodoku/data-science/ds1/ds1_web.tex))
      - What can Big do for you? 
      - What is Big Data? 
      - Implications for Statistics and Computation 
      - What is Data Science? 
      - Prerequisites
- 2. Get your own (Big) Data ([presentation](https://github.com/soodoku/data-science/blob/master/ds2/ds2_present_web.pdf), [tex](https://github.com/soodoku/data-science/blob/master/ds2/ds2_web.tex))
+ 
+ 2. Get your own (Big) Data ([presentation](https://github.com/soodoku/data-science/ds2/ds2_present_web.pdf), [tex](https://github.com/soodoku/data-science/ds2/ds2_web.tex))
      - Scrape web pages and pdfs. ([Scripts](https://github.com/soodoku/python-workshop)) 
      - Image to Text. ([Script](https://github.com/soodoku/image-to-text))
      - Web Scraping/API Applications:
@@ -18,19 +19,24 @@ Data Science
      - Regular Expressions
      - Pre-process text data
      - [Assignment](https://github.com/soodoku/data-science/blob/master/ds2/scraping_assignment_web.txt)
- 3. Databases and SQL ([presentation](https://github.com/soodoku/data-science/blob/master/ds3/ds3_present_web.pdf), [tex](https://github.com/soodoku/data-science/blob/master/ds3/ds3_web.tex))
+ 
+ 3. Databases and SQL ([presentation](https://github.com/soodoku/data-science/ds3/ds3_present_web.pdf), [tex](https://github.com/soodoku/data-science/ds3/ds3_web.tex))
      - What are databases? 
      - Relational Model
      - Relational Algebra
      - Basic SQL
      - Views
- 4. Introduction to Statistical Learning ([presentation](https://github.com/soodoku/data-science/blob/master/ds4/ds4_present_web.pdf), [tex](https://github.com/soodoku/data-science/blob/master/ds4/ds4_web.tex))
+ 
+ 4. Introduction to Statistical Learning ([presentation](https://github.com/soodoku/data-science/ds4/ds4_present_web.pdf), [tex](https://github.com/soodoku/data-science/ds4/ds4_web.tex))
      - How to learn from data? 
      - Nearest Neighbors
      - When you don't have good neighbors
      - Assessing model fit
      - Clarification about Big Data
 
+5. Presenting Analyses
+    - [ggplot2](https://github.com/soodoku/data-science/graphs/ggplot2.md)
+    - [On writing](http://gbytes.gsood.com/on-writing/)
 
 Suggested Books
 --------------------

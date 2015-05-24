@@ -312,14 +312,14 @@ a <- as.data.frame(effect(...))
 #### Stat Summaries
 * stat_summary()
 * individual summary funcs like fun.y, fun.ymin, fun.ymax - take functions that take a vector and return single numeric
-		```{r }
-		funs <- function(x) mean(x, trim=.5)
-		stat_summary(fun.y = funs, geom="point")
-		```
+```{r }
+funs <- function(x) mean(x, trim=.5)
+stat_summary(fun.y = funs, geom="point")
+```
 * more complex data func = fun.data (return named vector as output)
-		```{r }
-		stat_summary(fun.data=exoticfunc, geom="ribbon")
-		```
+```{r }
+stat_summary(fun.data=exoticfunc, geom="ribbon")
+```
 
 #### Annotating a Plot
 * Key thing: Annotations are extra data
@@ -425,7 +425,7 @@ To modify default_scale:
 	- scale_shape
 	- scale_size_discrete
 	- scale_shape_manual
-```
+```{r }
 ggplot(data, aes(x)) +
 geom_line(aes(y = y + 5, color = "above")) +
 geom_line(aes(y = y -5, color = "below")) +
@@ -446,22 +446,88 @@ Chapter 7: Positioning
 -----------------------------------
 #### Faceting:
 
-facet_grid: 2d grid of panels
-	- facet_grid(. ~ .) means neither rows nor columns are faceted
-	- facet_grid(. ~ var)
+**facet_grid: 2d grid of panels**
+* facet_grid(. ~ .) means neither rows nor columns are faceted
+* facet_grid(. ~ var) produces single row with multiple cols
 
-facet_wrap: 1d ribbon of panels wrapped into 2d 
-	- 
+**facet_wrap: 1d ribbon of panels wrapped into 2d**
+
+** Controlling Scales**
+* scales="fixed", x and y scales are fixed across all panels
+* scales = "free", x and y vary across panels
+* scales = "free_x" only x varies, y is fixed
+
+** Dodging vs. Faceting**
+*  Can be pretty similar except for the labeling.
+```{r }
+qplot(xaxis, data=data, geom="bar", fill=diff_color_bars_same_x, position ="dodge")
+# similar to
+qplot(diff_color_bars_same_x, data=data, geom = "bar", fill=diff_color_bars_same_x) + 
+facet_grid(. ~ xaxis)
+```
+* To facet by continuous vars, categorize it: cut_interval(x, n=10) etc.
+
+** Coordinate Systems**
+* Diff coordinate systems built in:
+	* coord_flip: x is y now
+	* coord_equal: equal scale coords
+	* coord_trans: transform/log etc.
+	* coord_map
+	* coord_polar
+```
+plot + coord_flip()
+plot + coord_trans(x="pow10")
+plot + coord_cartesian(xlim=c(0,20))
+# coord_polar takes theta - position variable that is mapped to angle
+plot  + coord_polar(theta="y") # default is x (creates pie chart from a stacked bar chart)
+```
 
 Chapter 8: Polishing Your Plots for Publication
 ------------------------------------------------
-
-
+**Themes**
+* Themes control non data elements of plot
+* Themese control: font (title, axis, tick labels, strips, legend labels, legend key labels), color (ticks, grid lines, backgrounds (panel, plot, strip, legend))
+* Built in themes
+	* theme_gray() (Based on advice by Tufte, Brewer, Carr etc.)
+	* theme_bw()
+```
+previous_theme <- theme_set(theme_bw())
+plot + previous_theme
+theme_set(previous_theme) # permanently restores previous theme
+```
+* Theme elements
+	* theme_text() for labels, headings. Control font family, color, face, size, hjust, vjust, angle, lineheight
+	* theme_line(), theme_segment() take color, size, and linetype. e.g. opts(panel.grid.major = theme_line(color="red"))
+	* theme_rect() for background etc. and takes color, size, and linetype (changes the border)
+	* theme_blank() draws nothing. e.g. opts(panel.grid.major = theme_blank())
+	* you can alter old theme with theme_update
+* Save
+	* ggsave()
+	* pdf() qplot() dev.off()
+* Subplots
+	* viewport(x, y, width, height)
+	* pdf(); vp <- viewport(); small_graph; print(big_graph, vp=vp); dev.off()
+	* Grids
+		* grid.layout()
+		* grid.newpage()
+		* pushViewport(viewport(layout = grid.layout(2,2)))
 
 Chapter 9: Manipulating Data
 -----------------------------------
-
-
+* ddply(.data, .variables, .fun, ...)
+	* .data: dataset to break up
+	* .variables: grouping var
+	* .fun: summary function to apply
+* colwise() to apply a function to each column of data
+	* colwise(function)(data)
 
 Chapter 10: Reducing Duplication
 -----------------------------------
+* last plot can be accessed via last_plot()
+* you can save plot templates
+```
+xquiet <- scale_x_continuous("", breaks=NA)
+yquiet <- scale_y_continuous("", breaks=NA)
+quiet  <- c(xquiet, yquiet)
+plot + quiet 
+```

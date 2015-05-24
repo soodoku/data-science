@@ -24,7 +24,7 @@ Chapter 1: Introduction
 **What is a statistical graphic?**
 - Mapping from data to aesthetic attributes (color, shape, size) of geometric objects (points, lines, bars)
 
-**Basics:**
+**Basic components of such a mapping:**
 - data: stuff we want to visualize, mapping describes how variables are mapped to aesthetic attributes
 - geom: represents what you see on the plot: points, lines, polygons, etc.
 - scale: map values in data space to values in aesthetic space (color, size, shape), draws legends, axes
@@ -129,17 +129,15 @@ qplot(x, y, data=data,
 Chapter 3: Mastering the Grammar
 -----------------------------------
 
-#### ggplot2 basics:
-* Idea is to map aesthetics (position, size, shape, color) to variables or constants
-* Basic constituents:
-	- Geoms describe type of plot
-		- scatterplot: geom = point
-		- bubblechart: geom = point, size = mapped to a variable
-		- barchart: geom = bar etc.
-	- scaling: convert data units to pixels/spacing/colors
-	- coord: use coordinate system for position (coord)
-	- position adjustment
-	- faceting
+#### Basic components of ggplot2:
+* Geoms describe type of plot
+	- scatterplot: geom = point
+	- bubblechart: geom = point, size = mapped to a variable
+	- barchart: geom = bar etc.
+* scaling: convert data units to pixels/spacing/colors
+* coord: use coordinate system for position (coord)
+* position adjustment
+* faceting
 * End product: new dataset that records this information (x, y, color, size, shape)
 
 #### Layer 
@@ -474,7 +472,7 @@ facet_grid(. ~ xaxis)
 	* coord_trans: transform/log etc.
 	* coord_map
 	* coord_polar
-```
+```{r }
 plot + coord_flip()
 plot + coord_trans(x="pow10")
 plot + coord_cartesian(xlim=c(0,20))
@@ -525,7 +523,7 @@ Chapter 10: Reducing Duplication
 -----------------------------------
 * last plot can be accessed via last_plot()
 * you can save plot templates
-```
+```{r }
 xquiet <- scale_x_continuous("", breaks=NA)
 yquiet <- scale_y_continuous("", breaks=NA)
 quiet  <- c(xquiet, yquiet)

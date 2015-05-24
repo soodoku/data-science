@@ -312,14 +312,14 @@ a <- as.data.frame(effect(...))
 #### Stat Summaries
 * stat_summary()
 * individual summary funcs like fun.y, fun.ymin, fun.ymax - take functions that take a vector and return single numeric
-```{r }
-funs <- function(x) mean(x, trim=.5)
-stat_summary(fun.y = funs, geom="point")
-```
+		```{r }
+		funs <- function(x) mean(x, trim=.5)
+		stat_summary(fun.y = funs, geom="point")
+		```
 * more complex data func = fun.data (return named vector as output)
-```{r }
-stat_summary(fun.data=exoticfunc, geom="ribbon")
-```
+		```{r }
+		stat_summary(fun.data=exoticfunc, geom="ribbon")
+		```
 
 #### Annotating a Plot
 * Key thing: Annotations are extra data
@@ -431,7 +431,7 @@ geom_line(aes(y = y + 5, color = "above")) +
 geom_line(aes(y = y -5, color = "below")) +
 scale_color_manual("Legend Label", c("below" = "blue", "above" ="red"))
 ```
-*scale_identity: data are colours
+* scale_identity: data are colours
 
 #### Legends and Axes
 * Axis: axis label, tick mark, tick label
@@ -444,8 +444,14 @@ scale_color_manual("Legend Label", c("below" = "blue", "above" ="red"))
 
 Chapter 7: Positioning
 -----------------------------------
+#### Faceting:
 
+facet_grid: 2d grid of panels
+	- facet_grid(. ~ .) means neither rows nor columns are faceted
+	- facet_grid(. ~ var)
 
+facet_wrap: 1d ribbon of panels wrapped into 2d 
+	- 
 
 Chapter 8: Polishing Your Plots for Publication
 ------------------------------------------------

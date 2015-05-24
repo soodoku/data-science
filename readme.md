@@ -39,7 +39,7 @@ Data Science
     - Examples of ggplot in action: 
         - NYT Civil Rights Coverage ([R code](https://github.com/soodoku/nyt-civil-rights/blob/master/plot.R), [Graph](https://github.com/soodoku/nyt-civil-rights/blob/master/nyt_aa.pdf))
     - [Suggestions for writing](http://gbytes.gsood.com/on-writing/)
-
+    
 Suggested Books
 --------------------
 

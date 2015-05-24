@@ -21,25 +21,27 @@ Chapter 1: Introduction
 
 **Note**: To learn more about grammar of graphics, see [Wilkinson 2005](http://www.amazon.com/The-Grammar-Graphics-Statistics-Computing/dp/0387245448), [Wickham 2009 (pdf)](http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf)
 
-* What is a statistical graphic?
-  - Mapping from data to aesthetic attributes (color, shape, size) of geometric objects (points, lines, bars)
-* Basics:
-  - data: stuff we want to visualize, mapping describes how variables are mapped to aesthetic attributes
-  - geom: represents what you see on the plot: points, lines, polygons, etc.
-  - scale: map values in data space to values in aesthetic space (color, size, shape), draws legends, axes
-  - coord: data coordinates mapped to the plane of the graphic
-  - facet: how to break data into subsets
-* How ggplot fits into other R graphics:
-  - **Base graphics**: 
+**What is a statistical graphic?**
+- Mapping from data to aesthetic attributes (color, shape, size) of geometric objects (points, lines, bars)
+
+**Basics:**
+- data: stuff we want to visualize, mapping describes how variables are mapped to aesthetic attributes
+- geom: represents what you see on the plot: points, lines, polygons, etc.
+- scale: map values in data space to values in aesthetic space (color, size, shape), draws legends, axes
+- coord: data coordinates mapped to the plane of the graphic
+- facet: how to break data into subsets
+
+**How ggplot fits into other R graphics:**
+- **Base graphics**: 
 	- Pen and paper model: can only draw on top of the plot, cannot modify or delete existing content
 	- No user accessible representation of graphics apart from appearance on screen
 	- Includes tools for drawing primitives and entire plots
-  - **Grid**:
+- **Grid**:
 	- Developed by Paul Murrell (1998 disseration)
 	- Grid gobs (graphical objects) can be represented independently of the plot and modified later
 	- System of viewports (each containing own coord. system) allows for complex graphics
 	- Draws primitives but no way to produce statistical graphics
-  - **Lattice**:
+- **Lattice**:
 	- Sarkar 2008a
 	- Implements trellis of Cleveland (1985, 1993)
 	- Produces conditioned plots
@@ -91,7 +93,6 @@ qplot(categorical, quantitative, data=data, geom="jitter", alpha = I(1/10))
 
 #### Histogram and Density
 ```{r }
-
 # 1d geoms:  geom=histogram, freqpoly, density, bar 
 
 qplot(x, data=data, geom="histogram", # or geom = "density"
@@ -128,7 +129,7 @@ qplot(x, y, data=data,
 Chapter 3: Mastering the Grammar
 -----------------------------------
 
-#### Basics of ggplot2:
+#### ggplot2 basics:
 * Idea is to map aesthetics (position, size, shape, color) to variables or constants
 * Basic constituents:
 	- Geoms describe type of plot
@@ -186,9 +187,9 @@ geom_smooth()
 #### Each basic component in detail
 
 **Data**
-	- Must be a data.frame
-	- If you want to produce the same plot for different data frames
-	- to see same plot with new data:
+- Must be a data.frame
+- If you want to produce the same plot for different data frames
+- to see same plot with new data:
 ```{r }
 p <- ggplot(data, aes(x,y)) + geom_point()
 p %+% new_data
@@ -253,32 +254,25 @@ Chapter 5: Toolbox
 3. Display metadata
 
 #### Basic plot types (shortcuts) (all these understand size and color aesthetic):
-* geom_area()
-* geom_bar()
+* geom_area, geom_bar()
 * geom_line() (also understands linetype), geom_path() (same as geom_line but lines connected in order)
-* geom_point()
-* geom_polygon() (filled path, each vertex = separate row)
+* geom_point(), geom_polygon() (filled path, each vertex = separate row)
 * geom_text() (also has hjust, vjust)
 * geom_tile()
-
-#### 1d:
 * geom_histogram()
 * geom_freqpoly
 * geom_boxplot()
 * geom_density()
 * geom_jitter() (crude way of looking at categorical data, prevents overplotting)
 
-
-#### Dealing with overplotting
+#### Dealing with Overplotting
 * Make points smaller (shape =".") or using hollow glyphs (shape =1)
 * alpha
 * jitter
-
 ```{r }
 p <- ggplot(data, aes(x, y))
 j <- position_jitter(width=.5)
 p + geom_jitter(position = j, alpha("color", 1/10))
-
 ```
 
 * binning 
@@ -287,10 +281,22 @@ p + geom_jitter(position = j, alpha("color", 1/10))
 	- stat_binhex(bins = 10)
 	- stat_binhex(bindiwth=c(.02, 200))
 
-* summaries
+* stat summaries
 
-#### Surface Plots + Maps
+#### Maps
+* add map borders using borders() function 
+```
+library(maps)
+data(us.cities)
+ggplot(data, aes(long, lat)) + borders("state", size=.5)
 
+"
+choropleth maps:
+start by merging map data with whatever else
+reorder the merged
+geom = polygon 
+"
+```
 #### Revealing Uncertainty
 
 Geoms that can do intervals:
@@ -303,9 +309,74 @@ library(effects)
 a <- as.data.frame(effect(...))
 ```
 
+#### Stat Summaries
+* stat_summary()
+* individual summary funcs like fun.y, fun.ymin, fun.ymax - take functions that take a vector and return single numeric
+```{r }
+funs <- function(x) mean(x, trim=.5)
+stat_summary(fun.y = funs, geom="point")
+```
+* more complex data func = fun.data (return named vector as output)
+```{r }
+stat_summary(fun.data=exoticfunc, geom="ribbon")
+```
+
+#### Annotating a Plot
+* Key thing: Annotations are extra data
+```{r }
+geom_vline(), geom_hline # use it to highlight certain points on say a timeline
+geom_rect() to highlight interesting rect regions (takes xmin, xmax, ymin, ymax)
+geom_text(aes(x, y, label="caption")) # x, y are coords, label can be a single label, list of labels
+```
+* Arrows
+	- geom_line, geom_path, and geom_segment all have an arrow param
+	- use arrow() function to tweak the arrow. arrow takes angle, length, ends, type
 
 Chapter 6: Scales, Axes, and Legends
 -----------------------------------
+
+**Scales control mapping from data to aesthetics. They also provide viewers a guide to map back from aesthetics to data.**
+
+#### How Scales work:
+* Input can be discrete or continuous. 
+* Process of mapping domain to range:
+	- transformation: only for continuous. log etc.
+	- training: domain is learned. complicated when graph has multiple layers
+	- mapping: function that translates domain to range (which we knew before)
+
+#### Usage
+```{r }
+plot <- qplot(quant, quant, data)
+plot + aes(x=categorical) # doesn't work as scale of x is still cont.
+plot + aes(x=categorical) + scale_x_discrete()
+```
+
+To modify default_scale:
+* Must construct a new scale and add with +
+* Scale constructors 
+	- start with scale_ 
+	- followed by aesthetic (color_, shape_, x_)
+	- followed by name of scale (gradient, hue, manual)
+	- for e.g. scale_color_hue
+* Scale for each aesthetic 
+	- Colour and fill: 
+		- discrete: brewer, grey, hue, identity, manual (e.g. scale_color_brewer())
+		- cont: gradient, gradient2, gradientn
+	- position:
+		- discrete
+		- continuous, date
+	- shape:
+		- discrete only: shape, identity, manual
+	- line type:
+		- discrete only: linetype, identity, manual
+	- size:
+		- discrete: identity, manual
+		- cont: size
+* Types of Scales
+	- Position Scales: for axes
+	* Color Scales: map to colors
+	* Manual Scales: map manually to size, shape, color, line type etc.
+	* Identity Scale
 
 #### Common Arguments
 * name 
@@ -354,7 +425,22 @@ Chapter 6: Scales, Axes, and Legends
 	- scale_shape
 	- scale_size_discrete
 	- scale_shape_manual
+```
+ggplot(data, aes(x)) +
+geom_line(aes(y = y + 5, color = "above")) +
+geom_line(aes(y = y -5, color = "below")) +
+scale_color_manual("Legend Label", c("below" = "blue", "above" ="red"))
+```
+*scale_identity: data are colours
 
+#### Legends and Axes
+* Axis: axis label, tick mark, tick label
+* Legend: legend title, key, key label
+* Scale name controls axis label, legend title
+* breaks and labels (see above)
+* for visual appearance, see axis.*, legend.*
+* internal grid: panel.grid.major/minor
+* legend.position, legend.justification
 
 Chapter 7: Positioning
 -----------------------------------

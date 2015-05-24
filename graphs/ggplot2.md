@@ -185,7 +185,7 @@ geom_smooth()
 
 #### Each basic component in detail
 
-* Data
+**Data**
 	- Must be a data.frame
 	- If you want to produce the same plot for different data frames
 	- to see same plot with new data:
@@ -194,55 +194,55 @@ p <- ggplot(data, aes(x,y)) + geom_point()
 p %+% new_data
 ```
 
-* Aesthetic Mappings
-	- aes function
-	- the mappings can be modified later by doing + aes()
-	- do summary(p) to see how the object changes
-	- you can change the y-axis by doing p + geom_pont(aes(y=new_y))
+**Aesthetic Mappings**
+- aes function
+- the mappings can be modified later by doing + aes()
+- do summary(p) to see how the object changes
+- you can change the y-axis by doing p + geom_pont(aes(y=new_y))
 
-* Setting Versus Mapping
-	- color = "red" versus color = var
+**Setting Versus Mapping**
+- color = "red" versus color = var
 
-* Grouping
-	- break by a categorical variable for instance
+**Grouping**
+- break by a categorical variable for instance
 
-* Geoms
-	- each geom has a set of aesthetics it needs and a larger set it understands. 
-	- For instance, point needs x and y and understands color, size, shape
-	- Bar geom needs height (ymax) and understands width, border color, fill color
-	- every geom has a default stat
-	- list of all geoms:
-		- abline, area, bar, 
-		- blank (draws nothing), 
-		- boxplot
-		- countour (3d contours in 2d), crossbar (hollow bar with middle indicated by a line)
-		- density, density_2d (2d density)
-		- errorbar 
-		- histogram, hline
-		- interval, jitter, line (connect obs.)
-		- linerange 
-		- path (connect obs. in original order)
-		- point, pointrange (vertical line, with point in the middle)
-		- polygon
-		- ribbon, rug
-		- segment, smooth, step (connect obs. in stairs)
-		- text, tile, vline
+**Geoms**
+- each geom has a set of aesthetics it needs and a larger set it understands. 
+- For instance, point needs x and y and understands color, size, shape
+- Bar geom needs height (ymax) and understands width, border color, fill color
+- every geom has a default stat
+- list of all geoms:
+	- abline, area, bar, 
+	- blank (draws nothing), 
+	- boxplot
+	- countour (3d contours in 2d), crossbar (hollow bar with middle indicated by a line)
+	- density, density_2d (2d density)
+	- errorbar 
+	- histogram, hline
+	- interval, jitter, line (connect obs.)
+	- linerange 
+	- path (connect obs. in original order)
+	- point, pointrange (vertical line, with point in the middle)
+	- polygon
+	- ribbon, rug
+	- segment, smooth, step (connect obs. in stairs)
+	- text, tile, vline
 
-* Stat
-	- stat takes dataset as input and outputs a dataset
-	- stat_bin produces: count, density, center of the bin (x)
-	- list of all stats:
-		- bin, boxplot, contour, density, density_2d, function, identity, qq,
-		- quantile, smooth, spoke (converts angle and radius to xend and yend),
-		- sum, summary, unique
+**Stat**
+- stat takes dataset as input and outputs a dataset
+- stat_bin produces: count, density, center of the bin (x)
+- list of all stats:
+	- bin, boxplot, contour, density, density_2d, function, identity, qq,
+	- quantile, smooth, spoke (converts angle and radius to xend and yend),		
+	- sum, summary, unique
 
-* Position Adjustments
-	- dodge, fill, identity, jitter, stack
+**Position Adjustments**
+- dodge, fill, identity, jitter, stack
 
-* Growth Trajectory tip
-	- Plots of longitudinal data are called spaghetti plots
-	- Plot estimated trajectories + actual data and can't see the issues
-	- Plot residuals
+**Growth Trajectory tip**
+- Plots of longitudinal data are called spaghetti plots
+- Plot estimated trajectories + actual data and can't see the issues
+- Plot residuals
 
 Chapter 5: Toolbox
 -----------------------------------

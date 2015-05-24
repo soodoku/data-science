@@ -22,7 +22,7 @@ Chapter 1: Introduction
 * For learning more about grammar of graphics, see Wilkinson 2005, Wickham 2009
 * What is a statistical graphic?
   - Mapping from data to aesthetic attributes (color, shape, size) of geometric objects (points, lines, bars)
-  - Plot may contain statistical transformations, drawn to specific coordinate system
+  - Plot may contain statistical transformations
   - Faceting for displaying same plot for diff. subsets
 * Basics:
   - Data: stuff you want to visualize, mapping describe how variables are mapped to aesthetic attributes
@@ -31,20 +31,20 @@ Chapter 1: Introduction
   - coord: data coordinated mapped to plane of graphic
   - facet: how to break data into subsets
 * How it fits into other R graphics:
-	-  Base graphics: 
-		- Pen and paper model - can only draw on top of the plot, cannot modify or delete existing content
-		- No user accessible representation of graphics apart from appearance on screen
-		- Includes tools for drawing primitives and entire plots
-	- Grid:
-		- Developed by Paul Murrell (1998 disseration)
-		- Grid gobs (graphical objects) can be represented independently of the plot and modified later
-		- System of viewports (each containing own coord. system) allows for complex graphics
-		- Draws primitives but no way to produce statistical graphics
-	- Lattice:
-		- Sarkar 2008a
-		- Implements trellis of Cleveland (1985, 1993)
-		- Produce conditioned plots
-		- Lack formal model
+  - **Base graphics**: 
+	- Pen and paper model - can only draw on top of the plot, cannot modify or delete existing content
+	- No user accessible representation of graphics apart from appearance on screen
+	- Includes tools for drawing primitives and entire plots
+  - **Grid**:
+	- Developed by Paul Murrell (1998 disseration)
+	- Grid gobs (graphical objects) can be represented independently of the plot and modified later
+	- System of viewports (each containing own coord. system) allows for complex graphics
+	- Draws primitives but no way to produce statistical graphics
+  - **Lattice**:
+	- Sarkar 2008a
+	- Implements trellis of Cleveland (1985, 1993)
+	- Produce conditioned plots
+	- Lack formal model
 
 Chapter 2: qplot
 ------------------

@@ -19,18 +19,17 @@ TOC:
 Chapter 1: Introduction
 -------------------------
 
-* For learning more about grammar of graphics, see Wilkinson 2005, Wickham 2009
+**Note**: To learn more about grammar of graphics, see [Wilkinson 2005](http://www.amazon.com/The-Grammar-Graphics-Statistics-Computing/dp/0387245448), [Wickham 2009 (pdf)](http://byrneslab.net/classes/biol607/readings/wickham_layered-grammar.pdf)
+
 * What is a statistical graphic?
   - Mapping from data to aesthetic attributes (color, shape, size) of geometric objects (points, lines, bars)
-  - Plot may contain statistical transformations
-  - Faceting for displaying same plot for diff. subsets
 * Basics:
-  - Data: stuff you want to visualize, mapping describe how variables are mapped to aesthetic attributes
-  - geom: represent what you see on the plot: points, lines, polygons, etc.
+  - data: stuff we want to visualize, mapping describes how variables are mapped to aesthetic attributes
+  - geom: represents what you see on the plot: points, lines, polygons, etc.
   - scale: map values in data space to values in aesthetic space (color, size, shape), draws legends, axes
-  - coord: data coordinated mapped to plane of graphic
+  - coord: data coordinates mapped to the plane of the graphic
   - facet: how to break data into subsets
-* How it fits into other R graphics:
+* How ggplot fits into other R graphics:
   - **Base graphics**: 
 	- Pen and paper model - can only draw on top of the plot, cannot modify or delete existing content
 	- No user accessible representation of graphics apart from appearance on screen
@@ -51,7 +50,7 @@ Chapter 2: qplot
 
 #### Scatterplot + Smoothers
 
-```
+```{r }
 qplot(x,y, data=data)
 
 " y can be a complex variable (a*b*c)

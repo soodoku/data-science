@@ -1,7 +1,5 @@
-Summary of ggplot2
-==================
-
-Efficient summary of the ggplot2 book. 
+Efficient summary of the ggplot2 book
+======================================
 
 TOC:
 --------
@@ -198,9 +196,8 @@ p %+% new_data
 - the mappings can be modified later by doing + aes()
 - do summary(p) to see how the object changes
 - you can change the y-axis by doing p + geom_pont(aes(y=new_y))
-
-**Setting Versus Mapping**
-- color = "red" versus color = var
+- **Setting Versus Mapping**
+	- color = "red" versus color = var
 
 **Grouping**
 - break by a categorical variable for instance
@@ -283,7 +280,7 @@ p + geom_jitter(position = j, alpha("color", 1/10))
 
 #### Maps
 * add map borders using borders() function 
-```
+```{r }
 library(maps)
 data(us.cities)
 ggplot(data, aes(long, lat)) + borders("state", size=.5)
@@ -523,9 +520,9 @@ Chapter 10: Reducing Duplication
 -----------------------------------
 * last plot can be accessed via last_plot()
 * you can save plot templates
-```{r }
-xquiet <- scale_x_continuous("", breaks=NA)
-yquiet <- scale_y_continuous("", breaks=NA)
-quiet  <- c(xquiet, yquiet)
-plot + quiet 
-```
+        ```{r }
+        xquiet <- scale_x_continuous("", breaks=NA)
+        yquiet <- scale_y_continuous("", breaks=NA)
+        quiet  <- c(xquiet, yquiet)
+        plot + quiet 
+        ```

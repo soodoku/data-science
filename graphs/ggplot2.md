@@ -128,7 +128,7 @@ Chapter 3: Mastering the Grammar
 -----------------------------------
 
 #### Basic components of ggplot2:
-* Geoms describe type of plot
+* Geoms: describe type of plot
 	- scatterplot: geom = point
 	- bubblechart: geom = point, size = mapped to a variable
 	- barchart: geom = bar etc.
@@ -195,7 +195,7 @@ p %+% new_data
 - aes function
 - the mappings can be modified later by doing + aes()
 - do summary(p) to see how the object changes
-- you can change the y-axis by doing p + geom_pont(aes(y=new_y))
+- you can change the y-axis by doing `p + geom_pont(aes(y=new_y))`
 - **Setting Versus Mapping**
 	- color = "red" versus color = var
 
@@ -249,7 +249,7 @@ Chapter 5: Toolbox
 3. Display metadata
 
 #### Basic plot types (shortcuts) (all these understand size and color aesthetic):
-* geom_area, geom_bar()
+* geom_area(), geom_bar()
 * geom_line() (also understands linetype), geom_path() (same as geom_line but lines connected in order)
 * geom_point(), geom_polygon() (filled path, each vertex = separate row)
 * geom_text() (also has hjust, vjust)
@@ -498,10 +498,10 @@ theme_set(previous_theme) # permanently restores previous theme
 	* you can alter old theme with theme_update
 * Save
 	* ggsave()
-	* pdf() qplot() dev.off()
+	* `pdf(); qplot(); dev.off()`
 * Subplots
-	* viewport(x, y, width, height)
-	* pdf(); vp <- viewport(); small_graph; print(big_graph, vp=vp); dev.off()
+	* `viewport(x, y, width, height)`
+	* `pdf(); vp <- viewport(); small_graph; print(big_graph, vp=vp); dev.off()`
 	* Grids
 		* grid.layout()
 		* grid.newpage()
@@ -519,7 +519,7 @@ Chapter 9: Manipulating Data
 Chapter 10: Reducing Duplication
 -----------------------------------
 * last plot can be accessed via last_plot()
-* you can save plot templates  
+* you can save plot templates
 ```{r }
 xquiet <- scale_x_continuous("", breaks=NA)
 yquiet <- scale_y_continuous("", breaks=NA)

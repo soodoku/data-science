@@ -520,9 +520,9 @@ Chapter 10: Reducing Duplication
 -----------------------------------
 * last plot can be accessed via last_plot()
 * you can save plot templates  
-        ```r 
-        xquiet <- scale_x_continuous("", breaks=NA)  
-        yquiet <- scale_y_continuous("", breaks=NA)  
-        quiet  <- c(xquiet, yquiet)  
-        plot + quiet   
-        ```
+```{r }
+xquiet <- scale_x_continuous("", breaks=NA)
+yquiet <- scale_y_continuous("", breaks=NA)
+quiet  <- c(xquiet, yquiet)
+plot + quiet 
+```

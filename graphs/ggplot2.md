@@ -31,7 +31,7 @@ Chapter 1: Introduction
   - facet: how to break data into subsets
 * How ggplot fits into other R graphics:
   - **Base graphics**: 
-	- Pen and paper model - can only draw on top of the plot, cannot modify or delete existing content
+	- Pen and paper model: can only draw on top of the plot, cannot modify or delete existing content
 	- No user accessible representation of graphics apart from appearance on screen
 	- Includes tools for drawing primitives and entire plots
   - **Grid**:
@@ -42,20 +42,22 @@ Chapter 1: Introduction
   - **Lattice**:
 	- Sarkar 2008a
 	- Implements trellis of Cleveland (1985, 1993)
-	- Produce conditioned plots
-	- Lack formal model
+	- Produces conditioned plots
+	- Lacks formal model
 
 Chapter 2: qplot
 ------------------
 
+Basic plotting function.
+
 #### Scatterplot + Smoothers
 
 ```{r }
+
+# Assume x and y are quant. variables
 qplot(x,y, data=data)
 
-" y can be a complex variable (a*b*c)
-"
-qplot(x, y, 
+qplot(x, y,  # x or y can be a complex variable (a*b*c)
 			data=data, 
 			color=variable, # you can also do color=I("red") which isn't same as mapping
 			shape=variable, 
@@ -65,42 +67,45 @@ qplot(x, y,
 "
 Smoothers: 
 	- method="loess", span =.2 
-	- method = "gam", formula = y ~ s(x)
-	- method = "gam", formulat = y ~ s(x, bs = "cs")
-	- example: qplot(x, y, data=data, geom=c("smooth"), method="loess", span=.2)
+	- method = "gam", formula = y ~ s(x), formula = y ~ s(x, bs = "cs")
 	- method = "lm"
 	- method = "lm", formula = y ~ ns(x, 5)
 	- method = "rlm" # robust linear model
 "
+
+qplot(x, y, 
+			data=data, 
+			geom=c("smooth"), 
+			method="loess", 
+			span=.2)
 
 ```
 
 #### Boxplot and jittered points
 
 ```{r }
+
+# Scatter plot for quant vars. 
+# To prevent overplotting - jitter, and alpha
 qplot(categorical, quantitative, data=data, geom="jitter", alpha = I(1/10)) 
 
-"
-for boxplots, geom="boxplot"
-"
+# for boxplots, geom="boxplot"
+
 ```
 
 #### Histogram and Density
 
 ```{r }
-"
-1d geoms: 
-geom=histogram, freqpoly, density, bar
-"
-qplot(x, data=data, geom="histogram", 
+
+# 1d geoms:  geom=histogram, freqpoly, density, bar 
+
+qplot(x, data=data, geom="histogram", # or geom = "density"
 					bindwith=.1, 
 					fill=color, # color is a variable to which you want to map color
 					xlim=c(a,b))
 
-qplot(x, data=data, geom="density", color=color) # color is a variable to which you want to map color
-qplot(x, data=data, geom="histogram", bindwith=.1, xlim=c(a,b))
-
-qplot(x, data=data, geom="bar", weight=variable) # weighted bar chart 
+# weighted bar chart 
+qplot(x, data=data, geom="bar", weight=variable) 
 
 ```
 
@@ -131,8 +136,7 @@ qplot(x, y, data=data,
 Chapter 3: Mastering the Grammar
 -----------------------------------
 
-Basics of ggplot2: 
-
+#### Basics of ggplot2:
 * Idea is to map aesthetics (position, size, shape, color) to variables or constants
 * Basic constituents:
 	- Geoms describe type of plot
@@ -142,18 +146,19 @@ Basics of ggplot2:
 	- scaling: convert data units to pixels/spacing/colors
 	- coord: use coordinate system for position (coord)
 	- position adjustment
+	- faceting
 * End product: new dataset that records this information (x, y, color, size, shape)
 
-* Layer 
-	* layer = data (and mappings to it), stat, geom, position adjustment
-	* Plot can have multiple layers, with diff. datasets
+#### Layer 
+* layer = data (and mappings to it), stat, geom, position adjustment
+* Plot can have multiple layers, with diff. datasets
 
-* Plot Object:
-	- list with data, mapping, layers, scales, coordinates, and facet. and options (to store plot-specific theme options)
-	- to rend the object: print()
-	- to render to disk: ggsave()
-	- to describe structure: summary()
-	- to save cached copy to disk: save() (which can be brought back up using load())
+#### Plot object:
+* a list with data, mapping, layers, scales, coordinates, and facet. and options (to store plot-specific theme options)
+* to render to screen: print()
+* to render to disk: ggsave()
+* to describe structure: summary()
+* to save cached copy to disk: save() (which can be brought back up using load())
 
 Chapter 4: Build a Plot Layer by Layer
 ---------------------------------------

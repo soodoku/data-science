@@ -51,7 +51,6 @@ Chapter 2: qplot
 Basic plotting function.
 
 #### Scatterplot + Smoothers
-
 ```{r }
 
 # Assume x and y are quant. variables
@@ -78,11 +77,9 @@ qplot(x, y,
 			geom=c("smooth"), 
 			method="loess", 
 			span=.2)
-
 ```
 
 #### Boxplot and jittered points
-
 ```{r }
 
 # Scatter plot for quant vars. 
@@ -90,11 +87,9 @@ qplot(x, y,
 qplot(categorical, quantitative, data=data, geom="jitter", alpha = I(1/10)) 
 
 # for boxplots, geom="boxplot"
-
 ```
 
 #### Histogram and Density
-
 ```{r }
 
 # 1d geoms:  geom=histogram, freqpoly, density, bar 
@@ -110,19 +105,16 @@ qplot(x, data=data, geom="bar", weight=variable)
 ```
 
 #### Timeseries, paths
-
 ```{r }
 qplot(date, y, data=data, geom="line")
 ```
 
 #### Faceting
-
 ```{r }
 qplot(x, data=data, facets = category ~ ., geom="histogram", binwidth=.1)
 
 ```
 #### Other options
-
 ```{r }
 qplot(x, y, data=data, 
 			xlab = "x axis label",
@@ -163,18 +155,14 @@ Chapter 3: Mastering the Grammar
 Chapter 4: Build a Plot Layer by Layer
 ---------------------------------------
 
-#### Get started
-
-We start with data (always as a data.frame), and basic aesthetic mapping and add layers to it:
+ggplot always takes data as a data.frame. Start with mapping basic aesthetics to data, and then add layers to it:
 
 ```{r }
 p <- ggplot(data, aes(x, y, color=z)) # nothing would be displayed as no layers yet
 p + layer(geom = "point") # use + to add layers, this uses the mapping given and default values for stat and position adj.
-
 ```
 
-#### Layer Options:
-
+#### Layer:
 ```{r }
 layer(geom, geom_params, stat, stat_params, data, mapping, position)
 layer(geom = "bar", 
@@ -184,8 +172,7 @@ layer(geom = "bar",
 ```
 
 #### Shortcuts
-
-* But that is verbose so we use shortcuts exploiting the fact that
+* Specifying layer is verbose so we use shortcuts exploiting the fact that
 	- every geom is associated w/ default stat
 	- every stat w/ default geom
 * All shortcut functions start either with geom_ or stat_
@@ -194,16 +181,14 @@ layer(geom = "bar",
 geom_histogram(binwidth=X, fill="red")
 geom_point()
 geom_smooth()
-
 ```
 
-#### Each of the basics individually
+#### Each basic component in detail
 
 * Data
 	- Must be a data.frame
 	- If you want to produce the same plot for different data frames
 	- to see same plot with new data:
-
 ```{r }
 p <- ggplot(data, aes(x,y)) + geom_point()
 p %+% new_data
@@ -227,8 +212,9 @@ p %+% new_data
 	- Bar geom needs height (ymax) and understands width, border color, fill color
 	- every geom has a default stat
 	- list of all geoms:
-		- abline, area, 
-		- bar, blank (draws nothing), boxplot
+		- abline, area, bar, 
+		- blank (draws nothing), 
+		- boxplot
 		- countour (3d contours in 2d), crossbar (hollow bar with middle indicated by a line)
 		- density, density_2d (2d density)
 		- errorbar 
@@ -254,7 +240,7 @@ p %+% new_data
 	- dodge, fill, identity, jitter, stack
 
 * Growth Trajectory tip
-	- Plots of long. data are called spaghetti plots
+	- Plots of longitudinal data are called spaghetti plots
 	- Plot estimated trajectories + actual data and can't see the issues
 	- Plot residuals
 

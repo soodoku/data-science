@@ -77,7 +77,7 @@ Smoothers:
 
 #### Boxplot and jittered points
 
-```
+```{r }
 qplot(categorical, quantitative, data=data, geom="jitter", alpha = I(1/10)) 
 
 "
@@ -87,7 +87,7 @@ for boxplots, geom="boxplot"
 
 #### Histogram and Density
 
-```
+```{r }
 "
 1d geoms: 
 geom=histogram, freqpoly, density, bar
@@ -106,19 +106,19 @@ qplot(x, data=data, geom="bar", weight=variable) # weighted bar chart
 
 #### Timeseries, paths
 
-```
+```{r }
 qplot(date, y, data=data, geom="line")
 ```
 
 #### Faceting
 
-```
+```{r }
 qplot(x, data=data, facets = category ~ ., geom="histogram", binwidth=.1)
 
 ```
 #### Other options
 
-```
+```{r }
 qplot(x, y, data=data, 
 			xlab = "x axis label",
 			ylab = "y axis label",
@@ -162,7 +162,7 @@ Chapter 4: Build a Plot Layer by Layer
 
 We start with data (always as a data.frame), and basic aesthetic mapping and add layers to it:
 
-```
+```{r }
 p <- ggplot(data, aes(x, y, color=z)) # nothing would be displayed as no layers yet
 p + layer(geom = "point") # use + to add layers, this uses the mapping given and default values for stat and position adj.
 
@@ -170,7 +170,7 @@ p + layer(geom = "point") # use + to add layers, this uses the mapping given and
 
 #### Layer Options:
 
-```
+```{r }
 layer(geom, geom_params, stat, stat_params, data, mapping, position)
 layer(geom = "bar", 
 	  geom_params=list(fill= "red"),
@@ -185,7 +185,7 @@ layer(geom = "bar",
 	- every stat w/ default geom
 * All shortcut functions start either with geom_ or stat_
 
-```
+```{r }
 geom_histogram(binwidth=X, fill="red")
 geom_point()
 geom_smooth()
@@ -199,7 +199,7 @@ geom_smooth()
 	- If you want to produce the same plot for different data frames
 	- to see same plot with new data:
 
-```
+```{r }
 p <- ggplot(data, aes(x,y)) + geom_point()
 p %+% new_data
 ```
@@ -283,7 +283,7 @@ Chapter 5: Toolbox
 * alpha
 * jitter
 
-```
+```{r }
 p <- ggplot(data, aes(x, y))
 j <- position_jitter(width=.5)
 p + geom_jitter(position = j, alpha("color", 1/10))
@@ -307,7 +307,7 @@ Geoms that can do intervals:
 * geom_errorbar -> geom_crossbar
 * geom_linerange -> geom_pointrange
 
-```
+```{r }
 library(effects)
 a <- as.data.frame(effect(...))
 ```

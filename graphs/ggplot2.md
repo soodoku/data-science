@@ -519,7 +519,7 @@ Chapter 9: Manipulating Data
 Chapter 10: Reducing Duplication
 -----------------------------------
 * last plot can be accessed via last_plot()
-* you can save plot templates
+* you can save plot templates  
         ```{r }
         xquiet <- scale_x_continuous("", breaks=NA)
         yquiet <- scale_y_continuous("", breaks=NA)

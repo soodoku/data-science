@@ -21,11 +21,11 @@ Data Science
      - [Assignment](ds2/scraping_assignment_web.txt)
  
  3. Databases and SQL ([presentation](ds3/ds3_present_web.pdf), [tex](ds3/ds3_web.tex))
-     - What are databases? 
-     - Relational Model
-     - Relational Algebra
-     - Basic SQL
-     - Views
+ - What are databases? 
+ - Relational Model
+ - Relational Algebra
+ - Basic SQL
+ - Views
  
  4. Introduction to Statistical Learning ([presentation](ds4/ds4_present_web.pdf), [tex](ds4/ds4_web.tex))
      - How to learn from data? 
@@ -38,6 +38,7 @@ Data Science
     - [ggplot2 in brief](graphs/ggplot2.md)
     - Examples of ggplot in action: 
         - NYT Civil Rights Coverage ([R code](https://github.com/soodoku/nyt-civil-rights/blob/master/plot.R), [Graph](https://github.com/soodoku/nyt-civil-rights/blob/master/nyt_aa.pdf))
+        - Military Experience of UK Prime Ministers ([R code](https://github.com/soodoku/military-experience/blob/master/mil_plots.R), [Graph](https://github.com/soodoku/military-experience/blob/master/ukmil.pdf))
     - [Suggestions for writing](http://gbytes.gsood.com/on-writing/)
 
 Suggested Books

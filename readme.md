@@ -1,5 +1,5 @@
-Data Science
-=============
+Data Science: Some Basics
+==========================
 
  1. Introduction to Data Science ([presentation](ds1/ds1_present_web.pdf), [tex](ds1/ds1_web.tex))
    - What can Big do for you? 
@@ -11,6 +11,7 @@ Data Science
  2. Get your own (Big) Data ([presentation](ds2/ds2_present_web.pdf), [tex](ds2/ds2_web.tex))
    - Scrape web pages and pdfs. ([Scripts](https://github.com/soodoku/python-workshop)) 
    - Image to Text. ([Script](https://github.com/soodoku/image-to-text))
+   - Image to Text from R via Abbyy FineReader Cloud OCR SDK. ([R Package](https://github.com/soodoku/abbyyR))
    - Web Scraping/API Applications:
        - [Get Data on Journalists](https://github.com/soodoku/get-journalist-data)
        - [Get Weather Data](https://github.com/soodoku/get-weather-data)
@@ -55,3 +56,7 @@ ISBN: 1590282418
 [ggplot2: Elegant Graphics for Data Analysis (Use R!)](http://www.amazon.com/ggplot2-Elegant-Graphics-Data-Analysis/dp/0387981403)    
 By Hadley Wickham  
 ISBN: 0387981403
+
+License
+--------------------
+Released under the [Creative Commons License](License.md).

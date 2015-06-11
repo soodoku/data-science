@@ -42,7 +42,7 @@ Data Science: Some Basics
       - Military Experience of UK Prime Ministers ([R code](https://github.com/soodoku/military-experience/blob/master/mil_plots.R), [Graph](https://github.com/soodoku/military-experience/blob/master/ukmil.pdf))
    - [Suggestions for writing](http://gbytes.gsood.com/on-writing/)
 
-6. Some Applications
+ 6. Some Applications
    - From paper to digital ([presentation](app/PaperToDigital.pdf), [tex](app/PaperToDigital.tex))
    - Text as Data
       - [Sentiment Analysis](https://gist.github.com/soodoku/22e4cff2eb6a05be3c0d)

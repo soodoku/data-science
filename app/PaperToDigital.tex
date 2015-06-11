@@ -1,0 +1,256 @@
+\documentclass[compress, black]{beamer}
+\setbeamercolor{normal text}{fg=black}
+\beamertemplatesolidbackgroundcolor{white}
+\usecolortheme[named=black]{structure} 
+\usepackage{caption}
+\captionsetup{labelformat=empty}
+\setbeamertemplate{navigation symbols}{} 
+%\usefonttheme{structurebold}
+\usepackage[scaled]{helvet}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+%\usepackage{beamerthemesplit}
+\usepackage{graphics}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usefonttheme[onlymath]{serif}
+\usepackage{cmbright}
+
+\def\labelitemi{\textemdash}
+\setbeamertemplate{frametitle}{
+	\begin{centering}
+		\vskip15pt
+		\insertframetitle
+		\par
+	\end{centering}
+} 
+\title[DS]{From Paper to Digital}
+\author[Sood]{Gaurav~Sood}
+  \large
+\date[2015]{\today}
+\subject{LearnDS}
+\begin{document}
+\newcommand{\multilineR}[1]{\begin{tabular}[b]{@{}r@{}}#1\end{tabular}}
+\newcommand{\multilineL}[1]{\begin{tabular}[b]{@{}l@{}}#1\end{tabular}}
+\newcommand{\multilineC}[1]{\begin{tabular}[b]{@{}c@{}}#1\end{tabular}}
+
+\newenvironment{large_enum}{
+\Large
+\begin{itemize}
+  \setlength{\itemsep}{7pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+\begin{comment}
+
+	setwd(paste0(basedir, "github/Image-to-Text/ocr/present/"))
+	tools::texi2dvi("PaperToDigital.tex", pdf=TRUE,clean=TRUE)
+	setwd(basedir)
+
+\end{comment}
+
+ \frame
+  {
+    \titlepage
+  }
+
+\begin{frame}
+\frametitle{}
+	\only<1>{\Large When we think about paper \ldots}
+	\only<2>{\Large We think about \alert{government offices}}
+	\only<3>{\centering \scalebox{0.46}{\includegraphics{img/files1.jpg}}}
+	\only<4>{\centering \scalebox{0.26}{\includegraphics{img/files2.jpg}}}
+	\only<5>{\centering \scalebox{0.30}{\includegraphics{img/files3.jpg}}}
+	\only<6>{\Large But paper based storage of information is common}
+	\only<7>{\Large Libraries and Archives}
+	\only<8>{\Large Health records}
+	\only<9>{\Large Receipts \ldots}
+	\only<10>{\Large Small Businesses}
+	\only<11>{\Large And it isn't going away (quickly).}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Dead Tree Format}
+	\begin{large_enum}
+		\item[--]<2-> Accessible only on location
+		\item[--]<3-> Typically needs help of another human, who may in turn want \alert{money} 
+		\item[--]<4-> Hard to copy, distribute
+		\item[--]<5-> Flammable
+		\item[--]<6-> Time consuming to find stuff \\ \normalsize \pause \pause \pause \pause \pause \pause 
+					  Google returns average search query in .2 seconds
+		\item[--]<8-> Hard to analyze, summarize stored information
+		\item[--]<9-> Hard to track performance, identify anomalous transactions, identify patterns ...
+ 	\end{large_enum}
+\end{frame}
+
+\begin{frame}
+\frametitle{Solved Problem?}
+\begin{large_enum}
+	\item[--]<2-> Lots of software: 
+		\begin{enumerate}
+		 \item[--]<3->Adobe Professional
+		 \item[--]<4->Abbyy FineReader
+	 	 \item[--]<5->Tesseract
+		\end{enumerate}
+	\item[--]<6->But ...
+		\begin{enumerate}
+		 \item[--]<7->Still can't handle complex layout, languages other than english etc.\\
+			\only<8>{\normalsize
+			\begin{quote}``I found that even native OCR software such as \ldots the Abbyy Fine Reader \alert{proved utterly incapable of extracting words from scanned images of the texts}, even when those scanned images were of high quality.''\end{quote}}
+			\item[--]<9->No information on how well you do (\alert{Quality Metrics}).
+			\item[--]<10->Not scalable
+		\end{enumerate}
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}
+\frametitle{How to Convert Squiggles to Bits?}
+	\begin{large_enum}
+		\item[--]<2-> Take images of paper
+		\item[--]<3-> Within images, find where \alert{relevant} text is located
+		\item[--]<4-> Find out how the text is laid out
+		\item[--]<5-> Recognize the characters
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}
+\frametitle{Thus Performance Depends on...}
+	\begin{large_enum}
+		 \item[--]<1->Quality of the scan: spine, contrast etc.
+			\only<2>{\scalebox{0.6}{\includegraphics{ScannedBook3.png}}}
+		 \item[--]<3->Complexity of the layout
+		 	\only<4>{\scalebox{0.35}{\includegraphics{ScannedBook2.png}}}
+		 	\only<5>{\scalebox{0.6}{\includegraphics{ScannedBook4.png}}}
+		 \item[--]<6->Font
+		 \item[--]<7->Language
+		 \item[--]<8->Hardware and Software (duh!)
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}
+\frametitle{OCR}
+	\begin{large_enum}
+	\item[--]<1->Make images
+	\item[--]<2->Detect Text \\ \pause 
+	\only<3->{\scalebox{1}{\includegraphics{TextArea.png}}}
+	\item[--]<4->Segment ``Characters''\\ \pause \pause 
+	\only<5->{\scalebox{1}{\includegraphics{CharacterBoxes.png}}}
+	\item[--]<6->Classify ``Characters''\\ \pause 
+	\only<7->{\scalebox{1}{\includegraphics{recognize2.png}}}
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}
+\frametitle{Mechanics}
+\begin{large_enum}	
+	\item[--]<1->Detect Text
+	\begin{enumerate}
+		\item[--]<2-> Supervised Learning 
+		\item[--]<3-> Blobs with text, Blobs without
+		\item[--]<4-> But size of a blob is an issue
+	\end{enumerate}
+	\item[--]<5->Character Segmentation
+	\begin{enumerate}
+		\item[--]<6-> Supervised Learning
+		\item[--]<7-> Letters (and \alert{Ligatures}) versus Splits
+	\end{enumerate}
+	\item[--]<8->Classify Characters (and Ligatures)
+	\begin{enumerate}	
+		\item[--]<1-> Supervised Learning
+		\item[--]<2-> A versus B versus C...
+	\end{enumerate}
+\end{large_enum}
+\end{frame}
+
+\begin{frame}
+\frametitle{Supervised Learning}
+\begin{large_enum}	
+	\item[--]<1->Classified (training) data
+	\item[--]<2->Estimate a model\\ \pause \normalsize
+				 \only<3>{$logit [p(spam)] = \alpha + f'\beta$ where $f$ is frequencies.\\}
+				 \only<4>{Predict class (e.g. Blobs with or without text) using features (pixel by pixel rgb)\\
+	 			 Use cross-validation to tune the parameters} 
+	\item[--]<5->Predict classes of unseen data (groups of pixels) 
+\end{large_enum}
+\end{frame}
+
+\begin{frame}
+\frametitle{Paper to Digital Pipeline}
+	\begin{large_enum}
+		\item[--]<1-> Take images of paper
+		\item[--]<1-> Within images, find where \alert{relevant} text is located
+		\item[--]<1-> Find out how the text is laid out
+		\item[--]<1-> Recognize the characters
+		\item[--]<2-> \alert{Every step is error prone} 
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}
+	\only<1->{\Large Optimize all steps w.r.t final error rate.}
+	\only<2->{\Large How to deal with errors that remain}
+\end{frame}
+\begin{frame}
+\frametitle{How to Fix Errors}
+	\begin{large_enum}
+		\item[--]<1->How confident are you that...
+		\begin{enumerate}
+			\item[--]<2-> An area has \alert{relevant} text
+			\item[--]<3-> Split is correct
+			\item[--]<4-> Right character (or ligature) is recognized 		
+		\end{enumerate}
+		\item[--]<5-> Flag low confidence areas, splits, characters...
+		\item[--]<6-> Get humans to identify the correct classes
+		\item[--]<7-> Use that knowledge to fix other errors
+	   \end{large_enum}
+\end{frame}
+
+\begin{frame}
+\frametitle{Fixing Character Recognition Errors}
+	\begin{large_enum}
+		\item[--]<1-> Search and Replace
+		\item[--]<2-> OCR makes certain kinds of errors (| is mistaken for an I) 
+		\item[--]<3-> Compare against a corpora (dictionary) and replace 
+		\item[--]<4-> But replace with what?
+		\item[--]<5-> standd -> strand, stand, stood, or sand?
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Edit Distance} 
+	\begin{large_enum}
+		\item[--]<1->How similar are two strings?
+		\item[--]<2->Typically refers to minimum edit distance
+		\item[--]<3->Minimum number of editing operations (Insertion, Deletion, Substitution) to convert one string to another.
+		\item[--]<4->Levenshtein Distance, substitution cost = 2
+		\item[--]<5->You can implement this at word level so Microsoft Corp. is 1 away from Microsoft.
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}
+\frametitle{Supervised Learning}
+	\begin{large_enum}
+	\item[--]<1->But edit distance isn't context aware. Use surrounding words.
+	\item[--]<2->How likely is a certain word within a phrase?  
+	\item[--]<3->$\sim$ Contemporary spelling correction algorithms
+	\item[--]<4->A bigram model of language: given previous word, probability of next word 
+	\item[--]<5->But good training data is paramount.
+	\end{large_enum}
+\end{frame}
+
+\begin{frame}
+\frametitle{Supervised Learning}
+	\begin{large_enum}
+	\item[--]<1->Training data is `similar data' (topic model) and data from human computation
+	\item[--]<2->Estimate a model based on similar data 
+	\item[--]<3->Use stochastic gradient descent to continue to tweak parameters based on human computation
+	\item[--]<4->Human computation parallelized, data for costlier (most duplicated low confidence strings, errors in recognition correlated) errors prioritized
+	\item[--]<5->Calculate error rate against trained random sample
+	\end{large_enum}
+\end{frame}
+
+\end{document}

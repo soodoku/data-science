@@ -17,6 +17,7 @@ Data Science: Some Basics
        - [Get Weather Data](https://github.com/soodoku/get-weather-data)
        - [Get Cricket Data](https://github.com/soodoku/get-cricket-data)
        - [Get Congressional Speech Data](https://gist.github.com/soodoku/85d79275c5880f67b4cf)
+       - [Track FB Likes, Twitter Followers, Youtube Views](https://github.com/soodoku/likes-followers-views)
    - Regular Expressions
    - Pre-process text data
    - [Assignment](ds2/scraping_assignment_web.txt)

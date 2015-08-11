@@ -19,9 +19,11 @@ Data Science: Some Basics
        - [Get Congressional Speech Data](https://gist.github.com/soodoku/85d79275c5880f67b4cf)
        - [Track FB Likes, Twitter Followers, Youtube Views](https://github.com/soodoku/likes-followers-views)
        - [Track Civil Rights Coverage in NY Times using NYT API](https://github.com/soodoku/nyt-civil-rights)
+   - [Get Social Networking Data](https://github.com/pablobarbera/social-media-workshop)
    - Regular Expressions
    - Pre-process text data
    - [Assignment](ds2/scraping_assignment_web.txt)
+   
  
  3. Databases and SQL ([presentation](ds3/ds3_present_web.pdf), [tex](ds3/ds3_web.tex))
    - What are databases? 

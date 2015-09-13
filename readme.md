@@ -50,6 +50,7 @@ Data Science: Some Basics
    - From paper to digital ([presentation](app/PaperToDigital.pdf), [tex](app/PaperToDigital.tex))
    - Text as Data
       - [Sentiment Analysis](https://gist.github.com/soodoku/22e4cff2eb6a05be3c0d)
+      - [Model Relationship Between Words and Ideology][https://github.com/soodoku/speech-learn)
 
 Suggested Books
 --------------------

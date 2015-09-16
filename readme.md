@@ -11,7 +11,8 @@ Data Science: Some Basics
  2. Get your own (Big) Data ([presentation](ds2/ds2_present_web.pdf), [tex](ds2/ds2_web.tex))
    - Scrape web pages and pdfs. ([Scripts](https://github.com/soodoku/python-workshop)) 
    - Image to Text. ([Script](https://github.com/soodoku/image-to-text))
-   - Image to Text from R via Abbyy FineReader Cloud OCR SDK. ([R Package](https://github.com/soodoku/abbyyR))
+   - Image to Text in R via [Abbyy FineReader Cloud OCR](https://github.com/soodoku/abbyyR)
+   - Image to Text in R via [Captricity API](https://github.com/soodoku/captr)
    - Web Scraping/API Applications:
        - [Get Data on Journalists](https://github.com/soodoku/get-journalist-data)
        - [Get Weather Data](https://github.com/soodoku/get-weather-data)

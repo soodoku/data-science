@@ -10,9 +10,9 @@ Data Science: Some Basics
  
  2. Get your own (Big) Data ([presentation](ds2/ds2_present_web.pdf), [tex](ds2/ds2_web.tex))
    - Scrape web pages and pdfs. ([Scripts](https://github.com/soodoku/python-workshop)) 
-   - Image to Text. ([Script](https://github.com/soodoku/image-to-text))
-   - Image to Text in R via [Abbyy FineReader Cloud OCR](https://github.com/soodoku/abbyyR)
-   - Image to Text in R via [Captricity API](https://github.com/soodoku/captr)
+   - Image to Text ([Python Script using Tesseract](https://github.com/soodoku/image-to-text))
+   - Image to Text in R using the [Abbyy FineReader Cloud OCR](https://github.com/soodoku/abbyyR)
+   - Image to Text in R using the [Captricity API](https://github.com/soodoku/captr)
    - Web Scraping/API Applications:
        - [Get Data on Journalists](https://github.com/soodoku/get-journalist-data)
        - [Get Weather Data](https://github.com/soodoku/get-weather-data)
@@ -25,7 +25,6 @@ Data Science: Some Basics
    - Pre-process text data
    - [Assignment](ds2/scraping_assignment_web.txt)
    
- 
  3. Databases and SQL ([presentation](ds3/ds3_present_web.pdf), [tex](ds3/ds3_web.tex))
    - What are databases? 
    - Relational Model
@@ -52,7 +51,8 @@ Data Science: Some Basics
    - Text as Data
       - [Sentiment Analysis](https://gist.github.com/soodoku/22e4cff2eb6a05be3c0d)
       - [Model Relationship Between Words and Ideology](https://github.com/soodoku/speech-learn)
-
+      - [Basic Text Classifier](https://gist.github.com/soodoku/e34dbe0219b0f00a74d5)
+      
 Suggested Books
 --------------------
 

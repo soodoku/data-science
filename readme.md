@@ -39,14 +39,20 @@ Data Science: Some Basics
    - Assessing model fit
    - Clarification about Big Data
 
- 5. Presenting Analyses
+ 5. Supervised Methods
+
+ 6. Unsupervised Methods
+    - PCA, CA
+    - k-means ([presentation](ds6/kmeans.pdf), [tex](ds6/kmeans.tex))
+
+ 7. Presenting Analyses
    - [ggplot2 in brief](graphs/ggplot2.md)
    - Examples of ggplot in action: 
       - NYT Civil Rights Coverage ([R code](https://github.com/soodoku/nyt-civil-rights/blob/master/plot.R), [Graph](https://github.com/soodoku/nyt-civil-rights/blob/master/nyt_aa.pdf))
       - Military Experience of UK Prime Ministers ([R code](https://github.com/soodoku/military-experience/blob/master/mil_plots.R), [Graph](https://github.com/soodoku/military-experience/blob/master/ukmil.pdf))
    - [Suggestions for writing](http://gbytes.gsood.com/on-writing/)
 
- 6. Some Applications
+ 8. Some Applications
    - From paper to digital ([presentation](app/PaperToDigital.pdf), [tex](app/PaperToDigital.tex))
    - Text as Data
       - [Sentiment Analysis](https://gist.github.com/soodoku/22e4cff2eb6a05be3c0d)

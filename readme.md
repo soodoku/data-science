@@ -2,11 +2,11 @@ Data Science: Some Basics
 ==========================
 
  1. Introduction to Data Science ([presentation](ds1/ds1_present_web.pdf), [tex](ds1/ds1_web.tex))
-   - What can Big do for you? 
-   - What is Big Data? 
-   - Implications for Statistics and Computation 
-   - What is Data Science? 
-   - Prerequisites
+    * What can Big do for you? 
+    * What is Big Data? 
+    * Implications for Statistics and Computation 
+    * What is Data Science? 
+    * Prerequisites
  
  2. Get your own (Big) Data ([presentation](ds2/ds2_present_web.pdf), [tex](ds2/ds2_web.tex))
    - Scrape web pages and pdfs. ([Scripts](https://github.com/soodoku/python-workshop)) 

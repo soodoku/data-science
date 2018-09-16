@@ -32,7 +32,9 @@ Data Science: Some Basics
     * Basic SQL
     * Views
  
- 4. Introduction to Statistical Learning ([presentation](ds4/ds4_present_web.pdf), [tex](ds4/ds4_web.tex))
+ 4a. [Introduction to Introduction to Statistical Learning](https://github.com/soodoku/ds)
+ 
+ 4b. Introduction to Statistical Learning ([presentation](ds4/ds4_present_web.pdf), [tex](ds4/ds4_web.tex))
     * How to learn from data? 
     * Nearest Neighbors
     * When you don't have good neighbors
